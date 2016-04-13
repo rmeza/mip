@@ -6,3 +6,5 @@ Homestead.json
 .env.*.php
 .env.php
 .env
+.env.example
+.gitattributes
