@@ -1,7 +1,10 @@
 <?php
+
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -19,12 +22,16 @@ class DatabaseSeeder extends Seeder
                 ['name' => 'Katy Enriquez', 'email' => 'johana.enriquez@agro-operadora.com', 'password' => Hash::make('secret')],
                 ['name' => 'Francisco Jasso', 'email' => 'francisco.jasso@agro-operadora.com', 'password' => Hash::make('secret')],
         );
-            
+
         // Loop through each user above and create the record for them in the database
         foreach ($users as $user)
         {
             User::create($user);
         }
+        //TipoTrampaTableSeeder
+        $this->call(TipotrampaTableSeeder::class);
+        $this->command->info('Tipo trampa table seeded!');
+
         Model::reguard();
     }
 }
