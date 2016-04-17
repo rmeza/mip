@@ -13,7 +13,18 @@ class TipotrampaTableSeeder extends Seeder
     public function run()
     {
       DB::table('tipotrampas')->delete();
-      TipoTrampa::create(['name' => 'tipoa',
-                          'description' => 'tipoa']);
+      $tipotrampas = array(
+              ['name' => 'Mecanica', 'description' => 'Mecanica'],
+              ['name' => 'Voladores', 'description' => 'Voladores'],
+              ['name' => 'Cebo', 'description' => 'Cebo'],
+              ['name' => 'Goma', 'description' => 'Goma'],
+      );
+
+      foreach ($tipotrampas as $tipo)
+      {
+          TipoTrampa::create($tipo);
+      }
+
+
     }
 }
