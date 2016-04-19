@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlantasTable extends Migration
+class CreateUbicacionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreatePlantasTable extends Migration
      */
     public function up()
     {
-      Schema::create('plantas', function (Blueprint $table) {
+      Schema::create('ubicaciones', function (Blueprint $table) {
          $table->increments('id');
          $table->string('name')->unique();
          $table->string('description')->nullable();
@@ -27,6 +27,6 @@ class CreatePlantasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('plantas');
+      Schema::drop('ubicaciones');
     }
 }
