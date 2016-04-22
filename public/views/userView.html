@@ -1,10 +1,10 @@
 <div class="col-sm-6 col-sm-offset-3">
 	<div class="well">
-		<h5 ng-if="authenticated">Hola!, {{currentUser.name}}</h5>
+		<!--h5 ng-if="authenticated">Hola!, {{currentUser.name}}</h5-->
 		<h3>Usuarios Registrados</h3>
 		<div class="form-group">
 			<button class="btn btn-primary" ng-click="user.getUsers()">Ver Usuarios</button>
-			<button class="btn btn-danger" ng-click="user.logout()">Salir</button>
+			<!--button class="btn btn-danger" ng-click="user.logout()">Salir</button-->
 		</div>
 		<ul class="list-group" ng-if="user.users">
 			<li class="list-group-item" ng-repeat="user in user.users">
