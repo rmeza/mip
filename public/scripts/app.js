@@ -5,7 +5,7 @@
 	angular
 		.module('authApp', ['ui.router', 'satellizer'])
 		.config(function($stateProvider, $urlRouterProvider, $authProvider, $httpProvider, $provide) {
-			
+
 			function redirectWhenLoggedOut($q, $injector) {
 
 				return {
@@ -26,9 +26,9 @@
 						angular.forEach(rejectionReasons, function(value, key) {
 
 							if(rejection.data.error === value) {
-								
+
 								// If we get a rejection corresponding to one of the reasons
-								// in our array, we know we need to authenticate the user so 
+								// in our array, we know we need to authenticate the user so
 								// we can remove the current user from local storage
 								localStorage.removeItem('user');
 
@@ -51,7 +51,7 @@
 			$authProvider.loginUrl = '/api/authenticate';
 
 			$urlRouterProvider.otherwise('/auth');
-			
+
 			$stateProvider
 				.state('auth', {
 					url: '/auth',
@@ -62,6 +62,16 @@
 					url: '/users',
 					templateUrl: '../views/userView.html',
 					controller: 'UserController as user'
+				})
+				.state('inicio', {
+					url: '/inicio',
+					templateUrl: '../views/inicioView.html',
+					//controller: 'InicioController as inicio'
+				})
+				.state('logout', {
+					url: '/logout',
+					templateUrl: '../views/authView.html',
+					controller: 'LogoutController as logout'
 				});
 		})
 		.run(function($rootScope, $state) {
@@ -71,7 +81,7 @@
 			$rootScope.$on('$stateChangeStart', function(event, toState) {
 
 				// Grab the user from local storage and parse it to an object
-				var user = JSON.parse(localStorage.getItem('user'));			
+				var user = JSON.parse(localStorage.getItem('user'));
 
 				// If there is any user data in local storage then the user is quite
 				// likely authenticated. If their token is expired, or if they are
@@ -98,8 +108,9 @@
 						event.preventDefault();
 
 						// go to the "main" state which in our case is users
-						$state.go('users');
-					}		
+						//$state.go('users');
+						$state.go('inicio');
+					}
 				}
 			});
 		});

@@ -26,6 +26,7 @@
 		// We would normally put the logout method in the same
 		// spot as the login method, ideally extracted out into
 		// a service. For this simpler example we'll leave it here
+    //Not used for now, instead of I'm using LogoutController
 		vm.logout = function() {
 
 			$auth.logout().then(function() {
@@ -45,5 +46,5 @@
 			});
 		}
 	}
-	
+
 })();
