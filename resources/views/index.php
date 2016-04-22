@@ -46,4 +46,5 @@
     <script src="scripts/authController.js"></script>
     <script src="scripts/userController.js"></script>
     <script src="scripts/logoutController.js"></script>
+    <script src="scripts/configuraciontrampaController.js"></script>
 </html>

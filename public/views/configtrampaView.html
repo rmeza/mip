@@ -1,0 +1,36 @@
+<div class="form-group">
+  <button class="btn btn-primary" ng-click="trampa.getTrampas()">Ver Trampas</button>
+</div>
+
+<ul class="list-group" ng-if="trampa.trampas">
+  <li class="list-group-item" ng-repeat="trampa in trampa.trampas">
+    <h4>{{trampa.id}}</h4>
+    <h5>{{trampa.numerotrampa}}</h5>
+  </li>
+</ul>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Numero Trampa</th>
+      <th>planta</th>
+      <th>ubicacion</th>
+      <th>tipotrampa</th>
+      <!-- <th><button id="btn-add" class="btn btn-primary btn-xs" ng-click="toggle('add', 0)">Add New Employee</button></th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="trampa in trampas">
+      <td>{{  trampa.numerotrampa }}</td>
+      <!--td>{{ employee.name }}</td>
+      <td>{{ employee.email }}</td>
+      <td>{{ employee.contact_number }}</td>
+      <td>{{ employee.position }}</td-->
+      <td>
+        <!-- <button class="btn btn-default btn-xs btn-detail" ng-click="toggle('edit', employee.id)">Edit</button>
+        <button class="btn btn-danger btn-xs btn-delete" ng-click="confirmDelete(employee.id)">Delete</button> -->
+      </td>
+    </tr>
+  </tbody>
+</table>

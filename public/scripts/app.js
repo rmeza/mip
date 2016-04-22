@@ -72,6 +72,11 @@
 					url: '/logout',
 					templateUrl: '../views/authView.html',
 					controller: 'LogoutController as logout'
+				})
+				.state('trampas', {
+					url: '/trampas',
+					templateUrl: '../views/configtrampaView.html',
+					controller: 'ConfiguraciontrampaController as trampa'
 				});
 		})
 		.run(function($rootScope, $state) {
