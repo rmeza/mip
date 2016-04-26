@@ -23,6 +23,11 @@
 			});
 	//	}
 
+	  vm.addTrampa = function() {
+    $scope.movie.$save(function() {
+      $state.go('trampas'); 
+    });
+  };
 
 	}
 
