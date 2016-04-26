@@ -1,55 +1,37 @@
-<!-- <div class="form-group">
-  <label for="title" class="col-sm-2 control-label">Title</label>
+
+<div  class="form-group">
+  <label for="numero" class="col-sm-2 control-label">Numero</label>
   <div class="col-sm-10">
-    <input type="text" ng-model="trampa.title" class="form-control" id="title" placeholder="Movie Title Here"/>
+    <input type="text" class="form-control" name="numero" ng-model="trampa.numerotrampa"  placeholder=" Numero de Trampa "/>
   </div>
 </div>
 <div class="form-group">
-  <label for="year" class="col-sm-2 control-label">Release Year</label>
+  <label for="idtipotrampa" class="col-sm-2 control-label">Tipo Trampa</label>
   <div class="col-sm-10">
-    <input type="text" ng-model="trampa.releaseYear" class="form-control" id="year" placeholder="When was the trampa released?"/>
+    <select name="idtipotrampa" class="form-control"  ></select>
   </div>
 </div>
 <div class="form-group">
-  <label for="director" class="col-sm-2 control-label">Director</label>
+  <label for="idclasificaiontrampa" class="col-sm-2 control-label">Clasificacion Trampa</label>
   <div class="col-sm-10">
-    <input type="text" ng-model="trampa.director" class="form-control" id="director" placeholder="Who directed the trampa?"/>
+    <select name="idclasificaiontrampa" class="form-control" ></select>
   </div>
 </div>
 <div class="form-group">
-  <label for="plot" class="col-sm-2 control-label">Movie Genre</label>
+  <label for="idubicacion" class="col-sm-2 control-label">Ubicacion Trampa</label>
   <div class="col-sm-10">
-    <input type="text" ng-model="trampa.genre" class="form-control" id="plot" placeholder="Movie genre here"/>
+    <select name="idubicacion" class="form-control" ></select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="description" class="col-sm-2 control-label">Descripcion</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" name="description" placeholder=" Descripcion" />
   </div>
 </div>
 <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
     <input type="submit" class="btn btn-primary" value="Save"/>
   </div>
-</div> -->
-
-<div  class="form-group">
-  <label for="numero">Numero</label>
-  <input type="text" class="form-control" name="numero" data-bind="value: numero" />
-</div>
-<div class="form-group">
-  <label for="idtipotrampa">Tipo Dispositivo</label>
-  <select name="idtipotrampa" class="form-control" data-bind="value: SelectedTipo, options: mvvm.tipostrampa, optionsText: 'name' " ></select>
-</div>
-<div class="form-group" data-bind='with: SelectedTipo'>
-  <label for="idtipotrampa">Ubicacion Dispositivo</label>
-  <select name="idclasificaiontrampa" class="form-control" data-bind="value: SelectedLocalizacion, options: Localizaciones, optionsText: 'name' " ></select>
-</div>
-<div class="form-group" data-bind='with: SelectedTipo'>
-  <label for="idtipotrampa">Clasificacion de Dispositivo</label>
-  <select name="idclasificaiontrampa" class="form-control" data-bind="value: SelectedClasificacion, options: Clasificaciones, optionsText: 'name' " ></select>
-</div>
-<div class="form-group">
-  <label for="idtipotrampa">Area de Ubicacion</label>
-  <select name="id" class="form-control" data-bind="value: idubicacion, options: ubicaciones(), optionsText: 'description', optionsValue: 'id' " ></select>
-  <!--select name="idubicacion" class="form-control" data-bind="value: idubicacion, options: ubicaciones(), optionsText: 'Description', optionsValue: 'idubicacion' " ></select-->
-</div>
-<div class="form-group">
-  <label for="description">Description</label>
-  <input type="text" class="form-control" name="description" data-bind="value: description" />
 </div>
