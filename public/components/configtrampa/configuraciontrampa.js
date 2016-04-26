@@ -17,6 +17,11 @@
       templateUrl: '/components/configtrampa/trampaAdd.html',
       controller: 'ConfiguraciontrampaController as trampa'
     })
+    .state('editTrampa', {
+      url: '/trampas/:id/edit',
+      templateUrl: '/components/configtrampa/trampaEdit.html',
+      controller: 'ConfiguraciontrampaController as trampa'
+    })
 
 
   })
