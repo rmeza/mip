@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Configuracion Trampa <small>Listado</small></h3>
+</div>
+<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#saveModal">
+  <i class="fa fa-plus-circle fa-fw"></i>&nbsp; Crear
+</button>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Numero</th>
+      <th>Planta</th>
+      <th>Tipo</th>
+      <th>Clasificacion</th>
+      <th>Ubicacion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="trampa in trampa.trampas">
+      <td>{{  trampa.numerotrampa }}</td>
+      <td>{{  trampa.name }}</td>
+      <td>{{  trampa.tiponame }}</td>
+      <td>{{  trampa.clasificacionname }}</td>
+      <td>{{  trampa.ubicacionname }}</td>
+      <td>
+        <!-- <button class="btn btn-default btn-xs btn-detail" ng-click="toggle('edit', employee.id)">Edit</button>
+        <button class="btn btn-danger btn-xs btn-delete" ng-click="confirmDelete(employee.id)">Delete</button> -->
+      </td>
+    </tr>
+  </tbody>
+</table>

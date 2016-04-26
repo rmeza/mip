@@ -2,8 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Ricardo Meza<ingricadomeza@gmail.com>" />
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+
         <title>Manejo Integrado de Plagas</title>
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
         <style>
         .navbar { border-radius:0; }
         </style>
@@ -32,7 +37,7 @@
         </div>
       </nav>
 
-      <div ui-view></div>
+      <div  class="col-md-10" ui-view></div>
 
     </body>
 
@@ -47,4 +52,5 @@
     <script src="scripts/userController.js"></script>
     <script src="scripts/logoutController.js"></script>
     <script src="scripts/configuraciontrampaController.js"></script>
+    <script src="/components/configtrampa/configuraciontrampa.js"></script> 
 </html>
