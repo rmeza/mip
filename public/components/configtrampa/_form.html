@@ -8,9 +8,11 @@
 <div class="form-group">
   <label for="idtipotrampa" class="col-sm-2 control-label">Tipo Trampa</label>
   <div class="col-sm-10">
-    <select name="idtipotrampa" class="form-control"  ></select>
+    <select name="idtipotrampa" class="form-control" ng-model="selectedTrampa.countryId"
+      ng-options="tipo.countryId as tipo.name for tipo in trampa.tipotrampas"></select>
   </div>
 </div>
+ <span>Selected tipoid is {{selectedTrampa.countryId}}</span>
 <div class="form-group">
   <label for="idclasificaiontrampa" class="col-sm-2 control-label">Clasificacion Trampa</label>
   <div class="col-sm-10">
