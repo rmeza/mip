@@ -1,14 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Tipotrampa;
+use App\Clasificaciontrampa;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
-class TipotrampaController extends Controller
+class ClasificaciontrampaController extends Controller
 {
   public function __construct()
   {
@@ -18,7 +16,9 @@ class TipotrampaController extends Controller
 
   public function index()
   {
-    $tipotrampas = Tipotrampa::all();
-    return $tipotrampas;
+      // Retrieve all  in the database and return them
+      $clasificaciones = Clasificaciontrampa::all();
+      return $clasificaciones;
   }
+
 }
