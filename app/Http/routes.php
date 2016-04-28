@@ -20,4 +20,5 @@ Route::group(['prefix' => 'api'], function()
   Route::get('configuraciontrampa','ConfiguraciontrampaController@index');
   Route::get('tipotrampa','TipotrampaController@index');
   Route::get('clasificaciontrampa','ClasificaciontrampaController@index');
+  Route::get('ubicaciontrampa','UbicaciontrampaController@index');
 });

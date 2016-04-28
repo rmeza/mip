@@ -20,14 +20,15 @@
       ng-options="clasificacion.id as clasificacion.name for clasificacion in trampa.clasificaciones"></select>
   </div>
 </div>
-<span>Selected tipo id is {{selectedClasificacionTrampa.id}}</span>
+<span>Selected clasificacion id is {{selectedClasificacionTrampa.id}}</span>
 <div class="form-group">
   <label for="idubicacion" class="col-sm-2 control-label">Ubicacion Trampa</label>
   <div class="col-sm-10">
-    <select name="idubicacion" class="form-control" ></select>
+    <select name="idubicacion" class="form-control" ng-model="selectedUbicacion.id"
+    ng-options="ubicacion.id as ubicacion.name for ubicacion in trampa.ubicaciones" ></select>
   </div>
 </div>
-
+<span>Selected ubicacion is {{selectedUbicacion.id}}</span>
 <div class="form-group">
   <label for="description" class="col-sm-2 control-label">Descripcion</label>
   <div class="col-sm-10">

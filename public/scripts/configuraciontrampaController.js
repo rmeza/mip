@@ -35,6 +35,13 @@
 			vm.error = error;
 		});
 
+		//use to populate input ubicacion select.
+		$http.get('api/ubicaciontrampa').success(function(ubicaciones) {
+			vm.ubicaciones = ubicaciones;
+		}).error(function(error) {
+			vm.error = error;
+		});
+
 		vm.addTrampa = function() {
 			$scope.movie.$save(function() {
 				$state.go('trampas');
