@@ -18,4 +18,5 @@ Route::group(['prefix' => 'api'], function()
 	Route::post('authenticate', 'AuthenticateController@authenticate');
 	Route::get('authenticate/user','AuthenticateController@getAuthenticatedUser');
   Route::get('configuraciontrampa','ConfiguraciontrampaController@index');
+  Route::get('tipotrampa','TipotrampaController@index');
 });
