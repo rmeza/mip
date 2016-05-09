@@ -66,7 +66,7 @@
 		.state('inicio', {
 			url: '/inicio',
 			templateUrl: '../components/inicioView.html',
-			//controller: 'InicioController as inicio'
+			controller: 'InicioController as inicio'
 		})
 		.state('logout', {
 			url: '/logout',

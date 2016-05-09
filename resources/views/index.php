@@ -26,9 +26,9 @@
             <li><a ui-sref="eventos">Eventos</a></li>
             <li><a ui-sref="graficos">Graficos</a></li>
             <li><a ui-sref="users">Usuarios</a></li>
-            
-            <li>  <select name="idplanta" class="form-control" ng-model="selectedClasificacionTrampa.id"
-                ng-options="planta.id as planta.name for planta in planta.plantas"></select></li>
+
+            <li>  <select name="idplanta" class="form-control" ng-model="selectedPlanta.id"
+                ng-options="planta.id as planta.name for planta in plantas"></select></li>
           </ul>
 
 
@@ -58,4 +58,5 @@
     <script src="scripts/logoutController.js"></script>
     <script src="scripts/configuraciontrampaController.js"></script>
     <script src="/components/configtrampa/configuraciontrampa.js"></script>
+    <script src="scripts/inicioController.js"></script>
 </html>
