@@ -43,9 +43,23 @@
 		});
 
 		vm.addTrampa = function() {
-			$scope.movie.$save(function() {
+			var objTrampa = {
+				numerotrampa:vm.numerotrampa,
+				idplanta:$rootScope.selectedPlanta.id
+			};
+
+			$http({
+				method: 'POST',
+				url: 'api/configuraciontrampa',
+				data: objTrampa,
+				headers: {'Content-Type': 'application/json'}
+			}).success(function(response) {
+				console.log(response);
 				$state.go('trampas');
+			}).error(function(response) {
+				console.log(response);
 			});
+
 		};
 
 

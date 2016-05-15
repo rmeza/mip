@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-//use App\Configuraciontrampa;
+use App\Configuraciontrampa;
 use DB;
 
 use JWTAuth;
@@ -32,6 +32,23 @@ class ConfiguraciontrampaController extends Controller
           ->get();
 
       return $trampas;
+  }
+
+  public function store(Request $request) {
+    $trampa = new Configuraciontrampa;
+
+    $trampa->numerotrampa = $request->input('numerotrampa');
+    $trampa->description = 'desc';
+    $trampa->createdby = 'Yo';
+    $trampa->modifiedby = 'yoo';
+    $trampa->idplanta = $request->input('idplanta');
+    $trampa->idubicacion = 1;
+    $trampa->idtipotrampa = 1;
+    $trampa->idclasificaiontrampa = 1;
+
+    $trampa->save();
+    return $trampa->numerotrampa;
+
   }
 
 }
