@@ -7,7 +7,7 @@
         <link rel="icon" type="image/x-icon" href="favicon.ico">
 
         <title>Manejo Integrado de Plagas</title>
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
@@ -21,7 +21,7 @@
         .navbar {
         margin-bottom: 20px;
         }
-        
+
     </style>
     </head>
     <body ng-app="authApp">
