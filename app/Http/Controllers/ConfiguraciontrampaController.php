@@ -34,20 +34,27 @@ class ConfiguraciontrampaController extends Controller
       return $trampas;
   }
 
+  /**
+  * Store a nuew configuration trampa.
+  * @param  Request  $request
+  * @return Response
+  */
   public function store(Request $request) {
-    $trampa = new Configuraciontrampa;
+  $trampa = new Configuraciontrampa;
 
-    $trampa->numerotrampa = $request->input('numerotrampa');
-    $trampa->description = 'desc';
-    $trampa->createdby = 'Yo';
-    $trampa->modifiedby = 'yoo';
-    $trampa->idplanta = $request->input('idplanta');
-    $trampa->idubicacion = 1;
-    $trampa->idtipotrampa = 1;
-    $trampa->idclasificaiontrampa = 1;
 
-    $trampa->save();
-    return $trampa->numerotrampa;
+  $trampa->numerotrampa = $request->input('numerotrampa');
+  $trampa->description = $request->input('descripcion');
+  $trampa->createdby = 'Yo';
+  $trampa->modifiedby = 'yoo';
+  $trampa->idplanta = $request->input('idplanta');
+  $trampa->idubicacion = $request->input('ubicacion');
+  $trampa->idtipotrampa = $request->input('tipotrampa');
+  $trampa->idclasificaiontrampa = $request->input('clasificiontrampa');
+
+  $trampa->save();
+  return $trampa->numerotrampa;
+
 
   }
 

@@ -44,8 +44,13 @@
 
 		vm.addTrampa = function() {
 			var objTrampa = {
+
 				numerotrampa:vm.numerotrampa,
-				idplanta:$rootScope.selectedPlanta.id
+				idplanta:$rootScope.selectedPlanta.id,
+				tipotrampa:vm.selectedTipoTrampa,
+				clasificiontrampa:vm.selectedClasificacionTrampa,
+				ubicacion:vm.selectedUbicacion,
+				descripcion:vm.descripcion
 			};
 
 			$http({
@@ -61,7 +66,6 @@
 			});
 
 		};
-
 
 	}
 
