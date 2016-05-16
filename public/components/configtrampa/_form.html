@@ -6,9 +6,9 @@
   </div>
 </div>
 <div class="form-group">
-  <label for="idtipotrampa" class="col-sm-2 control-label">Tipo Trampa</label>
+  <label for="selectedTipoTrampa" class="col-sm-2 control-label">Tipo Trampa</label>
   <div class="col-sm-10">
-    <select name="idtipotrampa" class="form-control" ng-model="selectedTipoTrampa.id"
+    <select name="selectedTipoTrampa"  class="form-control" ng-model="trampa.selectedTipoTrampa"
       ng-options="tipo.id as tipo.name for tipo in trampa.tipotrampas"></select>
   </div>
 </div>
@@ -16,7 +16,7 @@
 <div class="form-group">
   <label for="idclasificaiontrampa" class="col-sm-2 control-label">Clasificacion Trampa</label>
   <div class="col-sm-10">
-    <select name="idclasificaiontrampa" class="form-control" ng-model="selectedClasificacionTrampa.id"
+    <select name="idclasificaiontrampa" class="form-control" ng-model="trampa.selectedClasificacionTrampa"
       ng-options="clasificacion.id as clasificacion.name for clasificacion in trampa.clasificaciones"></select>
   </div>
 </div>
@@ -24,7 +24,7 @@
 <div class="form-group">
   <label for="idubicacion" class="col-sm-2 control-label">Ubicacion Trampa</label>
   <div class="col-sm-10">
-    <select name="idubicacion" class="form-control" ng-model="selectedUbicacion.id"
+    <select name="idubicacion" class="form-control" ng-model="trampa.selectedUbicacion"
     ng-options="ubicacion.id as ubicacion.name for ubicacion in trampa.ubicaciones" ></select>
   </div>
 </div>
@@ -32,7 +32,7 @@
 <div class="form-group">
   <label for="description" class="col-sm-2 control-label">Descripcion</label>
   <div class="col-sm-10">
-    <input type="text" class="form-control" name="description" placeholder=" Descripcion" />
+    <input type="text" class="form-control" name="description" placeholder=" Descripcion" ng-model="trampa.descripcion" />
   </div>
 </div>
 <div class="form-group">
