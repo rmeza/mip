@@ -20,9 +20,11 @@ Route::group(['prefix' => 'api'], function()
     Route::get('authenticate/user','AuthenticateController@getAuthenticatedUser');
     Route::get('configuraciontrampa','ConfiguraciontrampaController@index');
     Route::post('configuraciontrampa','ConfiguraciontrampaController@store');
+    Route::delete('configuraciontrampa/{id}','ConfiguraciontrampaController@destroy');
     Route::get('tipotrampa','TipotrampaController@index');
     Route::get('clasificaciontrampa','ClasificaciontrampaController@index');
     Route::get('ubicaciontrampa','UbicaciontrampaController@index');
     Route::get('planta','PlantaController@index');
+
 
 });
