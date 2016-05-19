@@ -18,12 +18,11 @@
       controller: 'ConfiguraciontrampaController as trampa'
     })
     .state('editTrampa', {
-      url: '/trampas/:id/edit',
+      url: '/trampas/edit/:id',
       templateUrl: '/components/configtrampa/trampaEdit.html',
       controller: 'ConfiguraciontrampaController as trampa'
     })
-
-
+  
   })
 
 })();

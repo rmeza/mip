@@ -26,7 +26,7 @@ class ConfiguraciontrampaController extends Controller
           ->join('tipotrampas', 'tipotrampas.id', '=', 'configuraciontrampas.idtipotrampa')
           ->join('clasificaciontrampas', 'clasificaciontrampas.id', '=', 'configuraciontrampas.idclasificaiontrampa')
           ->join('ubicaciones', 'ubicaciones.id', '=', 'configuraciontrampas.idubicacion')
-          ->select('configuraciontrampas.numerotrampa', 'plantas.name',
+          ->select('configuraciontrampas.id','configuraciontrampas.numerotrampa', 'plantas.name',
                    'tipotrampas.name as tiponame','clasificaciontrampas.name as clasificacionname',
                    'ubicaciones.name as ubicacionname')
           ->get();
@@ -54,8 +54,18 @@ class ConfiguraciontrampaController extends Controller
 
   $trampa->save();
   return $trampa->numerotrampa;
+  }
 
-
+  /**
+  * Delete the configuration trampa.
+  * @param  id
+  * @return Response
+  */
+  public function destroy($id) {
+    
+    $trampa =  Configuraciontrampa::find($id);
+    $trampa->delete();
+    return 'we\'re deleting trampa '.$id;
   }
 
 }
