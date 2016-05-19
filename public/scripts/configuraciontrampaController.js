@@ -27,7 +27,6 @@
 		vm.trampas;
 		vm.error;
 
-
 		//Grab the list of trampas from the API
 		$http.get('api/configuraciontrampa').success(function(trampas) {
 			vm.trampas = trampas;
@@ -81,12 +80,13 @@
 		};*/
 		
 
-		$scope.deleteTrampa = function(id){
+		$scope.deleteTrampa = function(id, index){
 
 			
 			$http.delete('api/configuraciontrampa/'+id)
 			.success(function(response) {
 				console.log(response);
+				vm.trampas.splice(index, 1);
 				$state.go('trampas');
 			})
 			.error(function(response) {
