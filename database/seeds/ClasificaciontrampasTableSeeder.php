@@ -16,7 +16,7 @@ class ClasificaciontrampasTableSeeder extends Seeder
       $tipotrampas = array(
               ['name' => 'Interior', 'description' => 'Interior'],
               ['name' => 'Exterior', 'description' => 'Exterior'],
-              ['name' => 'Feromona', 'description' => 'Feromona'],
+              ['name' => 'Voladores', 'description' => 'Voladores'],
       );
 
       foreach ($tipotrampas as $tipo)
