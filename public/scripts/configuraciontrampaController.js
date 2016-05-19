@@ -4,10 +4,23 @@
 
 	angular
 	.module('authApp')
-	.controller('ConfiguraciontrampaController', ConfiguraciontrampaController);
+	.controller('ConfiguraciontrampaController', ConfiguraciontrampaController)
 
+	.directive('ngReallyClick', function() {
+	return {
+	    restrict: 'A',
+	    link: function(scope, element, attrs) {
+	        element.bind('click', function() {
+	            var message = attrs.ngReallyMessage;
+	            if (message && confirm(message)) {
+	                scope.$apply(attrs.ngReallyClick);
+	            }
+	        });
+	    }
+	}
+	});
 
-	function ConfiguraciontrampaController($http, $auth, $rootScope, $state,$scope) {
+	function ConfiguraciontrampaController($http, $auth, $rootScope,$state,$scope) {
 
 		var vm = this;
 
@@ -42,9 +55,7 @@
 			vm.error = error;
 		});
 
-		
-
-		/*vm.editTrampa =function(vm.numerotrampa){
+		/*vm.editTrampa =function(id){
 			var objTrampa = {
 
 				numerotrampa:vm.numerotrampa,
@@ -53,7 +64,7 @@
 				clasificiontrampa:vm.selectedClasificacionTrampa,
 				ubicacion:vm.selectedUbicacion,
 				descripcion:vm.descripcion
-			};
+			}
 
 			$http({
 				method: 'POST',
@@ -67,10 +78,11 @@
 				console.log(response);
 			});
 
-		}*/
+		};*/
 		
 
 		$scope.deleteTrampa = function(id){
+
 			
 			$http.delete('api/configuraciontrampa/'+id)
 			.success(function(response) {
