@@ -15,7 +15,7 @@ class TipotrampaTableSeeder extends Seeder
       DB::table('tipotrampas')->delete();
       $tipotrampas = array(
               ['name' => 'Mecanica', 'description' => 'Mecanica'],
-              //['name' => 'Voladores', 'description' => 'Voladores'],
+              ['name' => 'Sin-Goma', 'description' => 'Sin-Goma'],
               ['name' => 'Cebo', 'description' => 'Cebo'],
               ['name' => 'Goma', 'description' => 'Goma'],
       );
