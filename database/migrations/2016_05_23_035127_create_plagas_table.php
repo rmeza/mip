@@ -20,9 +20,9 @@ class CreatePlagasTable extends Migration
          $table->string('modifiedby');
          $table->timestamps();
          //foreign keys
-         $table->integer('idclasificaciontrampa')->unsigned();
+        /* $table->integer('idclasificaciontrampa')->unsigned();
          $table->foreign('idclasificaciontrampa')->references('id')
-         ->on('clasificaciontrampas')->onDelete('cascade');
+         ->on('clasificaciontrampas')->onDelete('cascade');*/
 
        });
      }
