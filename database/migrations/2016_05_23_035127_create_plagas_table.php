@@ -15,9 +15,7 @@ class CreatePlagasTable extends Migration
        Schema::create('plagas', function ($table) {
          $table->increments('id');
          $table->string('name');
-         $table->string('description')->nullable();
-         $table->string('createdby');
-         $table->string('modifiedby');
+         $table->string('description')->nullable();    
          $table->timestamps();
          //foreign keys
         /* $table->integer('idclasificaciontrampa')->unsigned();
