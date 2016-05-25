@@ -23,6 +23,10 @@ class CreateDetalleeventosTable extends Migration
          $table->foreign('idevento')->references('id')
          ->on('eventos')->onDelete('cascade');
 
+         $table->integer('idplaga')->unsigned();
+         $table->foreign('idplaga')->references('id')
+         ->on('plagas')->onDelete('cascade');
+
        });
      }
 
