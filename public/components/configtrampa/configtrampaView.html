@@ -24,15 +24,28 @@
       <td>{{  trampa.name }}</td>
       <td>{{  trampa.tiponame }}</td>
       <td>{{  trampa.clasificacionname }}</td>
-      <td>{{  trampa.ubicacionname }}</td>
-      
+      <td>{{  trampa.ubicacionname }}{{menssage}}</td>
+        
       <td>
-      
-      <button class="btn btn-default btn-xs btn-detail" ui-sref="editTrampa" >
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Edit </button>
-      <button class="btn btn-danger btn-xs btn-delete" 
-      ng-really-message="Esta seguro de que quiere borrar este registro?" 
-      ng-really-click="deleteTrampa(trampa.id, $index)">Delete</button> 
+       
+        <div ng-controller="ModalDemoCtrl">
+        <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+          <h3 class="modal-title">Quieres borrar este registro?</h3>
+        </div>
+        <div class="modal-body">
+          
+         
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="button" ng-click="deleteTrampa(trampa.id,$idex)">OK</button>
+          <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+        </script>       
+        <button type="button" class="btn btn-danger" ng-click="open('sm')">Delete</button>
+        <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+        </div>
+       
       </td>
     </tr>
   </tbody>

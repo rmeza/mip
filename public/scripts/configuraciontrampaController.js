@@ -4,23 +4,9 @@
 
 	angular
 	.module('authApp')
-	.controller('ConfiguraciontrampaController', ConfiguraciontrampaController)
-
-	.directive('ngReallyClick', function() {
-	return {
-	    restrict: 'A',
-	    link: function(scope, element, attrs) {
-	        element.bind('click', function() {
-	            var message = attrs.ngReallyMessage;
-	            if (message && confirm(message)) {
-	                scope.$apply(attrs.ngReallyClick);
-	            }
-	        });
-	    }
-	}
-	});
-
-	function ConfiguraciontrampaController($http, $auth, $rootScope,$state,$scope) {
+	.controller('ConfiguraciontrampaController',ConfiguraciontrampaController,['$uibModal'])
+	
+	function ConfiguraciontrampaController($http, $auth, $rootScope,$state,$scope,$uibModal) {
 
 		var vm = this;
 
@@ -78,20 +64,36 @@
 			});
 
 		};*/
-		
 
+		$scope.openModal = function (size) 
+		{
+		    var modalInstance =  $uibModal.open({
+			    templateUrl: 'myModal.html',
+			    controller: 'myModalController',
+			    size: size,
+			    resolve: {
+			    	Items: function() //scope,$modal del modal
+			        {
+			          	return "Hola que asé";
+			        }
+			    }
+		    });
+		}
+	
 		$scope.deleteTrampa = function(id, index){
 
+		$scope.menssage="";	
 			
-			$http.delete('api/configuraciontrampa/'+id)
-			.success(function(response) {
-				console.log(response);
-				vm.trampas.splice(index, 1);
-				$state.go('trampas');
-			})
-			.error(function(response) {
-				console.log(response);
-			});
+				$http.delete('api/configuraciontrampa/'+id)
+				.success(function(response) {
+					console.log(response);
+					vm.trampas.splice(index, 1);
+					$state.go('trampas');
+				})
+				.error(function(response) {
+					console.log(response);
+				});
+			
 		};
 
 		vm.addTrampa = function() {
@@ -117,6 +119,7 @@
 				console.log(response);
 			});
 		};
+
 
 	}
 
