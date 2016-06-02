@@ -4,9 +4,9 @@
 
 	angular
 	.module('authApp')
-	.controller('ConfiguraciontrampaController',ConfiguraciontrampaController,['$uibModal'])
+	.controller('ConfiguraciontrampaController',ConfiguraciontrampaController,['$u'])
 	
-	function ConfiguraciontrampaController($http, $auth, $rootScope,$state,$scope,$uibModal) {
+	function ConfiguraciontrampaController($http, $auth, $rootScope,$state,$scope,$uibModal, $log) {
 
 		var vm = this;
 
@@ -64,23 +64,44 @@
 			});
 
 		};*/
+		$scope.animationsEnabled = true;
 
-		$scope.openModal = function (size) 
-		{
-		    var modalInstance =  $uibModal.open({
-			    templateUrl: 'myModal.html',
-			    controller: 'myModalController',
-			    size: size,
-			    resolve: {
-			    	Items: function() //scope,$modal del modal
-			        {
-			          	return "Hola que asé";
-			        }
-			    }
-		    });
-		}
+		$scope.deleteRow = function (size) {
+
+			var modalInstance = $uibModal.open({
+				animation: $scope.animationsEnabled,
+				templateUrl: 'myModalContent.html',
+				controller: function ($scope, $uibModalInstance) {
+
+					$scope.ok = function () {
+						$uibModalInstance.close();						
+					};
+
+					$scope.cancel = function () {
+						$uibModalInstance.dismiss('cancel');
+					};
+				},
+				size: size,
+				resolve: {
+					items: function () {
+						return $scope.items;
+					}
+				}
+			});
+
+			modalInstance.result.then(function () {
+				//funcion a ejecutar despues de el modal
+			}, function () {
+				$log.info('Modal dismissed at: ' + new Date());
+				
+			});
+		};
+
+		$scope.toggleAnimation = function () {
+			$scope.animationsEnabled = !$scope.animationsEnabled;
+		};
 	
-		$scope.deleteTrampa = function(id, index){
+		vm.deleteTrampa = function(id, index){
 
 		$scope.menssage="";	
 			
