@@ -64,13 +64,14 @@
 			});
 
 		};*/
-		$scope.animationsEnabled = true;
+		//$scope.animationsEnabled = true;
 
-		$scope.deleteRow = function (size) {
+		$scope.deleteRow = function (size, id, index) {
 
 			var modalInstance = $uibModal.open({
-				animation: $scope.animationsEnabled,
+				//animation: $scope.animationsEnabled,
 				templateUrl: 'myModalContent.html',
+				scope:$scope,
 				controller: function ($scope, $uibModalInstance) {
 
 					$scope.ok = function () {
@@ -80,12 +81,24 @@
 					$scope.cancel = function () {
 						$uibModalInstance.dismiss('cancel');
 					};
+
+					$scope.deleteTrampa = function(){
+						console.log("el index:"+index);
+						$http.delete('api/configuraciontrampa/'+id)
+						.success(function(response) {
+							console.log(response);
+							vm.trampas.splice(index, 1);
+							$state.go('trampas');
+						})
+						.error(function(response) {
+							console.log(response);
+						});
+					};
+
 				},
 				size: size,
 				resolve: {
-					items: function () {
-						return $scope.items;
-					}
+						id: function () {return id;}
 				}
 			});
 
@@ -97,25 +110,11 @@
 			});
 		};
 
-		$scope.toggleAnimation = function () {
+		/*$scope.toggleAnimation = function () {
 			$scope.animationsEnabled = !$scope.animationsEnabled;
 		};
-	
-		vm.deleteTrampa = function(id, index){
+	*/
 
-		$scope.menssage="";	
-			
-				$http.delete('api/configuraciontrampa/'+id)
-				.success(function(response) {
-					console.log(response);
-					vm.trampas.splice(index, 1);
-					$state.go('trampas');
-				})
-				.error(function(response) {
-					console.log(response);
-				});
-			
-		};
 
 		vm.addTrampa = function() {
 			var objTrampa = {
