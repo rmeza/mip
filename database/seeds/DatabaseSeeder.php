@@ -34,6 +34,9 @@ class DatabaseSeeder extends Seeder
         //Clasificaion trampa
         $this->call(ClasificaciontrampasTableSeeder::class);
         $this->command->info('Clasificacion trampa table seeded!');
+        //Plantas
+        $this->call(PlantaTableSeeder::class);
+        $this->command->info('plantas table seeded!');
 
 
         Model::reguard();
