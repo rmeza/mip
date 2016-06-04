@@ -4,23 +4,9 @@
 
 	angular
 	.module('authApp')
-	.controller('ConfiguraciontrampaController', ConfiguraciontrampaController)
-
-	.directive('ngReallyClick', function() {
-	return {
-	    restrict: 'A',
-	    link: function(scope, element, attrs) {
-	        element.bind('click', function() {
-	            var message = attrs.ngReallyMessage;
-	            if (message && confirm(message)) {
-	                scope.$apply(attrs.ngReallyClick);
-	            }
-	        });
-	    }
-	}
-	});
-
-	function ConfiguraciontrampaController($http, $auth, $rootScope,$state,$scope) {
+	.controller('ConfiguraciontrampaController',ConfiguraciontrampaController,['$u'])
+	
+	function ConfiguraciontrampaController($http, $auth, $rootScope,$state,$scope,$uibModal, $log) {
 
 		var vm = this;
 
@@ -78,21 +64,57 @@
 			});
 
 		};*/
-		
+		//$scope.animationsEnabled = true;
 
-		$scope.deleteTrampa = function(id, index){
+		$scope.deleteRow = function (size, id, index) {
 
-			
-			$http.delete('api/configuraciontrampa/'+id)
-			.success(function(response) {
-				console.log(response);
-				vm.trampas.splice(index, 1);
-				$state.go('trampas');
-			})
-			.error(function(response) {
-				console.log(response);
+			var modalInstance = $uibModal.open({
+				//animation: $scope.animationsEnabled,
+				templateUrl: 'myModalContent.html',
+				scope:$scope,
+				controller: function ($scope, $uibModalInstance) {
+
+					$scope.ok = function () {
+						$uibModalInstance.close();						
+					};
+
+					$scope.cancel = function () {
+						$uibModalInstance.dismiss('cancel');
+					};
+
+					$scope.deleteTrampa = function(){
+						console.log("el index:"+index);
+						$http.delete('api/configuraciontrampa/'+id)
+						.success(function(response) {
+							console.log(response);
+							vm.trampas.splice(index, 1);
+							$state.go('trampas');
+						})
+						.error(function(response) {
+							console.log(response);
+						});
+					};
+
+				},
+				size: size,
+				resolve: {
+						id: function () {return id;}
+				}
+			});
+
+			modalInstance.result.then(function () {
+				//funcion a ejecutar despues de el modal
+			}, function () {
+				$log.info('Modal dismissed at: ' + new Date());
+				
 			});
 		};
+
+		/*$scope.toggleAnimation = function () {
+			$scope.animationsEnabled = !$scope.animationsEnabled;
+		};
+	*/
+
 
 		vm.addTrampa = function() {
 			var objTrampa = {
@@ -117,6 +139,7 @@
 				console.log(response);
 			});
 		};
+
 
 	}
 
