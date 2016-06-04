@@ -22,7 +22,12 @@
       templateUrl: '/components/configtrampa/trampaEdit.html',
       controller: 'ConfiguraciontrampaController as trampa'
     })
-  
+    .state('eventos', {
+      url: '/eventos',
+      templateUrl: '/components/eventos/eventosView.html',
+      controller: 'EventosController as evento'
+    })
+    
   })
 
 })();
