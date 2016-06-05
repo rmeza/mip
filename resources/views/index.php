@@ -7,9 +7,10 @@
         <link rel="icon" type="image/x-icon" href="favicon.ico">
 
         <title>Manejo Integrado de Plagas</title>
-         <script src="node_modules/jquery/dist/jquery.min.js"></script>
-        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
         <style>
         .navbar { border-radius:0; }
@@ -72,7 +73,8 @@
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="node_modules/satellizer/satellizer.js"></script>
-
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+   <script src="node_modules/angular-confirm/angular-confirm.js"></script>  
     <!-- Application Scripts -->
     <script src="scripts/app.js"></script>
     <script src="scripts/authController.js"></script>
