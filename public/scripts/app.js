@@ -88,7 +88,7 @@
 			if(plantas)
 			{
 				$rootScope.plantas = plantas;
-			  $rootScope.selectedPlanta = angular.copy($rootScope.plantas[0]);
+			//  $rootScope.selectedPlanta = angular.copy($rootScope.plantas[0]);
 				if(toState.name === "auth") {
 					event.preventDefault();
 					$state.go('inicio');

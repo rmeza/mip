@@ -20,7 +20,7 @@
 			// Set the stringified user data into local storage
 			localStorage.setItem('plantas', plantasObject);
 
-			$rootScope.selectedPlanta = angular.copy($rootScope.plantas[0]);
+			//$rootScope.selectedPlanta = angular.copy($rootScope.plantas[0]);
 		}).error(function(error) {
 			vm.error = error;
 		});
