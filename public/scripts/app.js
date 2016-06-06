@@ -31,6 +31,7 @@
 							// in our array, we know we need to authenticate the user so
 							// we can remove the current user from local storage
 							localStorage.removeItem('user');
+							localStorage.removeItem('plantas');
 
 							// Send the user to the auth state so they can login
 							$state.go('auth');
@@ -88,7 +89,7 @@
 			{
 				$rootScope.plantas = plantas;
 			  $rootScope.selectedPlanta = angular.copy($rootScope.plantas[0]);
-				if(toState.name === "auth") {					
+				if(toState.name === "auth") {
 					event.preventDefault();
 					$state.go('inicio');
 				}
