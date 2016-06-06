@@ -9,7 +9,7 @@
         <title>Manejo Integrado de Plagas</title>
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
         <style>
@@ -45,12 +45,12 @@
               <li><a ui-sref="eventos">Eventos</a></li>
               <li><a ui-sref="graficos">Graficos</a></li>
               <li><a ui-sref="users">Usuarios</a></li>
-              <li> 
+              <li>
               <span id="idplanta" name="idplanta" aria-hidden="true">Planta</span>
                <select id="idplanta" name="idplanta" class="form-control" ng-model="selectedPlanta.id"
               ng-options="planta.id as planta.name for planta in plantas"></select>
               </li>
-              
+
             </ul>
             <ul class="nav navbar-nav navbar-right" align="right">
               <li><a ui-sref="logout">
@@ -63,7 +63,7 @@
         </div><!--/.container-fluid -->
       </nav>
       <!-- NAVIGATION -->
-      
+
 
       <div  class="col-md-10" ui-view></div>
 
@@ -74,7 +74,7 @@
     <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="node_modules/satellizer/satellizer.js"></script>
     <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
-   <script src="node_modules/angular-confirm/angular-confirm.js"></script>  
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
     <!-- Application Scripts -->
     <script src="scripts/app.js"></script>
     <script src="scripts/authController.js"></script>
