@@ -5,7 +5,7 @@
 	angular
 	.module('authApp')
 	.controller('ConfiguraciontrampaController',ConfiguraciontrampaController,['$u'])
-	
+
 	function ConfiguraciontrampaController($http, $auth, $rootScope,$state,$scope,$uibModal, $log) {
 
 
@@ -77,7 +77,7 @@
 				controller: function ($scope, $uibModalInstance) {
 
 					$scope.ok = function () {
-						$uibModalInstance.close();						
+						$uibModalInstance.close();
 					};
 
 					$scope.cancel = function () {
@@ -108,7 +108,7 @@
 				//funcion a ejecutar despues de el modal
 			}, function () {
 				$log.info('Modal dismissed at: ' + new Date());
-				
+
 			});
 		};
 
@@ -124,7 +124,9 @@
 				tipotrampa:vm.selectedTipoTrampa,
 				clasificiontrampa:vm.selectedClasificacionTrampa,
 				ubicacion:vm.selectedUbicacion,
-				descripcion:vm.descripcion
+				descripcion:vm.descripcion,
+				createdby: $rootScope.currentUser.email,
+				modifiedby:$rootScope.currentUser.email
 			};
 
 			$http({

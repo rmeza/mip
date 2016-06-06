@@ -45,8 +45,8 @@ class ConfiguraciontrampaController extends Controller
 
   $trampa->numerotrampa = $request->input('numerotrampa');
   $trampa->description = $request->input('descripcion');
-  $trampa->createdby = 'Yo';
-  $trampa->modifiedby = 'yoo';
+  $trampa->createdby = $request->input('createdby');
+  $trampa->modifiedby = $request->input('modifiedby');
   $trampa->idplanta = $request->input('idplanta');
   $trampa->idubicacion = $request->input('ubicacion');
   $trampa->idtipotrampa = $request->input('tipotrampa');
@@ -62,7 +62,7 @@ class ConfiguraciontrampaController extends Controller
   * @return Response
   */
   public function destroy($id) {
-    
+
     $trampa =  Configuraciontrampa::find($id);
     $trampa->delete();
     return 'we\'re deleting trampa '.$id;
