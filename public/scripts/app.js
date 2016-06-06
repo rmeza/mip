@@ -3,7 +3,7 @@
 	'use strict';
 
 	angular
-	.module('authApp', ['ui.router', 'satellizer','authApp.configuraciontrampa'])
+	.module('authApp', ['ui.router', 'satellizer','authApp.configuraciontrampa','ui.bootstrap','ui.bootstrap.tpls'])
 	.config(function($stateProvider, $urlRouterProvider, $authProvider, $httpProvider, $provide) {
 
 		function redirectWhenLoggedOut($q, $injector) {
@@ -115,4 +115,5 @@
 			}
 		});
 	});
+
 })();
