@@ -83,7 +83,16 @@
 
 			// Grab the user from local storage and parse it to an object
 			var user = JSON.parse(localStorage.getItem('user'));
-
+			var plantas = JSON.parse(localStorage.getItem('plantas'));
+			if(plantas)
+			{
+				$rootScope.plantas = plantas;
+			  $rootScope.selectedPlanta = angular.copy($rootScope.plantas[0]);
+				if(toState.name === "auth") {					
+					event.preventDefault();
+					$state.go('inicio');
+				}
+			}
 			// If there is any user data in local storage then the user is quite
 			// likely authenticated. If their token is expired, or if they are
 			// otherwise not actually authenticated, they will be redirected to
