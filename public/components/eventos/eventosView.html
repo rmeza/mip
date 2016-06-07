@@ -7,9 +7,11 @@
   <i class="fa fa-plus-circle fa-fw"></i>&nbsp; Crear
 </button>
 
+
 <table class="table">
   <thead>
     <tr>
+      <th></th>
       <th>trampa</th>
       <th>Ubicacion</th>
       <th>Clasificacion</th>
@@ -19,19 +21,47 @@
 
     </tr>
   </thead>
-  <tbody>
-    <tr ng-repeat="evento in evento.eventos">
-      <td>{{  evento.numerotrampa }}</td>
-      <td>{{  evento.ubicacionname }}</td>
-      <td>{{  evento.clasificacionname }}</td>
-      <td>{{  evento.fechaevento }}</td>
-      <td>{{  evento.semana }}</td>
-      <td>{{  evento.descripcion }}</td>
+  <tbody >
+
+    <tr ng-repeat-start="item in evento.eventos">
+      <td>
+        <button ng-if="evento.expanded" ng-click="evento.expanded = false">-</button>
+        <button ng-if="!evento.expanded" ng-click="evento.expanded = true; evento.showDetalle(item.id);">+</button>
+
+      </td>
+      <td>{{  item.numerotrampa }}</td>
+      <td>{{  item.id }}</td>
+      <td>{{  item.ubicacionname }}</td>
+      <td>{{  item.clasificacionname }}</td>
+      <td>{{  item.fechaevento }}</td>
+      <td>{{  item.semana }}</td>
+      <td>{{  item.descripcion }}</td>
+
       <td>
       <button class="btn btn-default btn-xs btn-detail" ui-sref="editEvento" >
       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Edit </button>
-      <button class="btn btn-danger btn-xs btn-delete" ng-click="deleteEvento(evento.id)" >Delete</button>
+      <button class="btn btn-danger btn-xs btn-delete" ng-click="deleteEvento(item.id)" >Delete</button>
       </td>
+
+   </tr>   
+  <tr  ng-if="evento.expanded" ng-repeat-end="">
+           <td colspan="4" >
+                <table>
+                  <thead>
+                 
+                    <tr>
+                      <th  colspan="2">Plaga</th>
+                      <th  colspan="2">Cantidad</th>
+                    </tr>
+                  </thead>
+                  <tbody>  
+                      <tr ng-show="true"  ng-repeat="item2 in evento.detalles" >
+                        <td colspan="2">{{  item2.name }}</td>
+                        <td colspan="2">{{  item2.quantity}}</td>
+                      </tr>   
+                  </tbody>
+                </table>  
+            </td>
     </tr>
   </tbody>
 </table>

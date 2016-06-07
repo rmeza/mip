@@ -35,7 +35,21 @@ class EventoController extends Controller
 
       return $eventos;
   }
+  
+  public function ShowDetail($id)
+  {
+      // Retrieve all  in the database and return them
+      //$trampas = Configuraciontrampa::all();
+      $detalle = DB::table('eventos')
+          ->join('detalleeventos', 'detalleeventos.idevento', '=', 'eventos.id')
+          ->join('plagas', 'detalleeventos.idplaga', '=', 'plagas.id')
+          ->select('eventos.id','plagas.name', 'quantity')
+          ->where('detalleeventos.id', '=', $id)
+          ->get();
 
+      return $detalle;
+  }
+  
   /**
   * Store a nuew configuration trampa.
   * @param  Request  $request
