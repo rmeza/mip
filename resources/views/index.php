@@ -82,5 +82,7 @@
     <script src="scripts/logoutController.js"></script>
     <script src="scripts/configuraciontrampaController.js"></script>
     <script src="/components/configtrampa/configuraciontrampa.js"></script>
+    <script src="scripts/eventoController.js"></script>
+    <script src="/components/eventos/evento.js"></script>
     <script src="scripts/inicioController.js"></script>
 </html>

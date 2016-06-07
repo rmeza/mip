@@ -10,22 +10,23 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Numero</th>
-      <th>Planta</th>
-      <th>Tipo</th>
-      <th>Clasificacion</th>
+      <th>trampa</th>
       <th>Ubicacion</th>
+      <th>Clasificacion</th>
+      <th>Fecha Evento</th>
+      <th>Semana</th>
+      <th>Observaciones</th>
 
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="evento in evento.eventos">
-      <td>{{  evento.numeroevento }}</td>
-      <td>{{  evento.name }}</td>
-      <td>{{  evento.tiponame }}</td>
-      <td>{{  evento.clasificacionname }}</td>
+      <td>{{  evento.numerotrampa }}</td>
       <td>{{  evento.ubicacionname }}</td>
-      
+      <td>{{  evento.clasificacionname }}</td>
+      <td>{{  evento.fechaevento }}</td>
+      <td>{{  evento.semana }}</td>
+      <td>{{  evento.descripcion }}</td>
       <td>
       <button class="btn btn-default btn-xs btn-detail" ui-sref="editEvento" >
       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Edit </button>
