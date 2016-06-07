@@ -23,19 +23,24 @@
   </thead>
   <tbody >
 
-    <tr ng-repeat-start="item in evento.eventos">
+    <tr class="row" ng-repeat-start="item in evento.eventos" ng-click="evento.showDetalle(item.id)">
       <td>
-        <button ng-if="evento.expanded" ng-click="evento.expanded = false">-</button>
-        <button ng-if="!evento.expanded" ng-click="evento.expanded = true; evento.showDetalle(item.id);">+</button>
+        
+      <div class="col-sm-2 text-right">
+        <a href="">
+        <i ng-hide="evento.active==item.id" class="fa fa-plus-square-o fa-2x"> </i>
+        <i ng-show="evento.active==item.id" class="fa fa-minus-square-o fa-2x"></i>
+        </a>
+      </div>
+
 
       </td>
-      <td>{{  item.numerotrampa }}</td>
-      <td>{{  item.id }}</td>
-      <td>{{  item.ubicacionname }}</td>
-      <td>{{  item.clasificacionname }}</td>
-      <td>{{  item.fechaevento }}</td>
-      <td>{{  item.semana }}</td>
-      <td>{{  item.descripcion }}</td>
+      <td class="col-sm-2">{{  item.numerotrampa }}</td>
+      <td class="col-sm-2">{{  item.ubicacionname }}</td>
+      <td class="col-sm-2">{{  item.clasificacionname }}</td>
+      <td class="col-sm-2">{{  item.fechaevento }}</td>
+      <td class="col-sm-2">{{  item.semana }}</td>
+      <td class="col-sm-2">{{  item.descripcion }}</td>
 
       <td>
       <button class="btn btn-default btn-xs btn-detail" ui-sref="editEvento" >
@@ -44,20 +49,21 @@
       </td>
 
    </tr>   
-  <tr  ng-if="evento.expanded" ng-repeat-end="">
-           <td colspan="4" >
+  <tr class="row" ng-show="evento.active==item.id" ng-repeat-end="">
+           <td colspan="8" >
                 <table>
                   <thead>
-                 
-                    <tr>
-                      <th  colspan="2">Plaga</th>
-                      <th  colspan="2">Cantidad</th>
+                    <tr >
+                      <th class="col-sm-2"></th>
+                      <th class="col-sm-2"  >Plaga</th>
+                      <th  class="col-sm-2" >Cantidad</th>
                     </tr>
                   </thead>
                   <tbody>  
-                      <tr ng-show="true"  ng-repeat="item2 in evento.detalles" >
-                        <td colspan="2">{{  item2.name }}</td>
-                        <td colspan="2">{{  item2.quantity}}</td>
+                      <tr   ng-repeat="item2 in evento.detalles" >
+                        <td class="col-sm-2"></td>
+                        <td class="col-sm-2" >{{  item2.name }}</td>
+                        <td class="col-sm-2 text-center" >{{  item2.quantity}}</td>
                       </tr>   
                   </tbody>
                 </table>  
