@@ -29,13 +29,13 @@ class EventoController extends Controller
           'ubicaciones.name as ubicacionname',
           'clasificaciontrampas.name as clasificacionname',
           'eventos.fechaevento',
-          'eventos.semana', 
+          'eventos.semana',
           'eventos.description')
           ->get();
 
       return $eventos;
   }
-  
+
   public function ShowDetail($id)
   {
       // Retrieve all  in the database and return them
@@ -44,12 +44,12 @@ class EventoController extends Controller
           ->join('detalleeventos', 'detalleeventos.idevento', '=', 'eventos.id')
           ->join('plagas', 'detalleeventos.idplaga', '=', 'plagas.id')
           ->select('eventos.id','plagas.name', 'quantity')
-          ->where('detalleeventos.id', '=', $id)
+          ->where('eventos.id', '=', $id)
           ->get();
 
       return $detalle;
   }
-  
+
   /**
   * Store a nuew configuration trampa.
   * @param  Request  $request
@@ -72,7 +72,7 @@ class EventoController extends Controller
   return $trampa->numerotrampa;
   }
 
-  
+
 
   /**
   * Delete the configuration trampa.
@@ -80,7 +80,7 @@ class EventoController extends Controller
   * @return Response
   */
   public function destroy($id) {
-    
+
     $trampa =  Configuraciontrampa::find($id);
     $trampa->delete();
     return 'we\'re deleting trampa '.$id;
