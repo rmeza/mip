@@ -6,7 +6,7 @@
 	.module('authApp')
 	.controller('EventoController',EventoController,['$u'])
 	
-	function EventoController($http, $auth, $rootScope,$state,$scope,$uibModal, $log) {
+	function EventoController($http, $auth, $rootScope,$state,$scope) {
 
 
 		var vm = this;
@@ -23,14 +23,17 @@
 		.error(function(error) {
 			vm.error = error;
 		});
-
-		//Grab the list of eventos from the API
-		
-
 		
 
 		//todo probar que funcione
 		vm.showDetalle=function (id){
+			console.log("valor del activo:"+vm.active)
+			if (vm.active != id) {
+			vm.active = id;
+			}
+			else {
+			vm.active = null;
+			}
 
 			$http.get('api/showdetalleevento/'+id)
 			.success(function(detalles) {
