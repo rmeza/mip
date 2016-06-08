@@ -43,7 +43,7 @@
               <li><a ui-sref="inicio">Inicio</a></li>
               <li><a ui-sref="trampas">Trampas</a></li>
               <li><a ui-sref="eventos">Eventos</a></li>
-              <li><a ui-sref="graficos">Graficos</a></li>
+              <li><a ui-sref="charts">Graficos</a></li>
               <li><a ui-sref="users">Usuarios</a></li>
               <li>
               <span id="idplanta" name="idplanta" aria-hidden="true">Planta</span>
@@ -85,4 +85,6 @@
     <script src="scripts/eventoController.js"></script>
     <script src="/components/eventos/evento.js"></script>
     <script src="scripts/inicioController.js"></script>
+    <script src="/components/charts/chart.js"></script>
+    <script src="scripts/chartController.js"></script>
 </html>

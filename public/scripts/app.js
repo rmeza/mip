@@ -6,6 +6,7 @@
 	.module('authApp', ['ui.router', 'satellizer',
 		'authApp.configuraciontrampa',
 		'authApp.evento',
+		'authApp.chart',
 		'ui.bootstrap','ui.bootstrap.tpls'])
 	.config(function($stateProvider, $urlRouterProvider, $authProvider, $httpProvider, $provide) {
 
