@@ -14,7 +14,7 @@ class CreateDetalleeventosTable extends Migration
      {
        Schema::create('detalleeventos', function ($table) {
          $table->increments('id');
-         $table->string('quantity');
+         $table->integer('quantity');
          $table->string('createdby');
          $table->string('modifiedby');
          $table->timestamps();
