@@ -4,8 +4,8 @@
 
 	angular
 	.module('authApp')
-	.controller('EventoController',EventoController,['$u'])
-	
+	.controller('EventoController',EventoController)
+
 	function EventoController($http, $auth, $rootScope,$state,$scope) {
 
 
@@ -23,7 +23,7 @@
 		.error(function(error) {
 			vm.error = error;
 		});
-		
+
 
 		//todo probar que funcione
 		vm.showDetalle=function (id){

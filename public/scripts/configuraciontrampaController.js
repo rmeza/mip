@@ -4,7 +4,7 @@
 
 	angular
 	.module('authApp')
-	.controller('ConfiguraciontrampaController',ConfiguraciontrampaController,['$u'])
+	.controller('ConfiguraciontrampaController',ConfiguraciontrampaController)
 
 	function ConfiguraciontrampaController($http, $auth, $rootScope,$state,$scope,$uibModal, $log) {
 

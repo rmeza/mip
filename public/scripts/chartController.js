@@ -4,7 +4,7 @@
 
 	angular
 	.module('authApp')
-	.controller('ChartController',ChartController,['$u'])
+	.controller('ChartController',ChartController)
 
 	function ChartController($http, $auth, $rootScope,$state,$scope) {
 
