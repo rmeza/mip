@@ -10,6 +10,13 @@
 
 		var vm = this;
 
+		$http.get('api/clasificaciontrampa').success(function(clasificaciones) {
+			vm.clasificaciones = clasificaciones;
+		}).error(function(error) {
+			vm.error = error;
+		});
+		
+
 		var chart = c3.generate({
 			bindto: '#chart',
 			data: {
