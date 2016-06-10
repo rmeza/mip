@@ -1,0 +1,50 @@
+﻿select * from configuraciontrampas 
+
+insert into eventos (semana,fechaevento,createdby,modifiedby,idconfiguraciontrampa) 
+values (2,'2016-01-04','YO','YO',1);
+
+insert into eventos (semana,fechaevento,createdby,modifiedby,idconfiguraciontrampa) 
+values (2,'2016-01-04','YO','YO',1);
+
+insert into eventos (semana,fechaevento,createdby,modifiedby,idconfiguraciontrampa) 
+values (2,'2016-01-04','YO','YO',2);
+
+select * from eventos 
+
+insert into detalleeventos (quantity,createdby,modifiedby,idevento,idplaga) 
+values (4,'YO','YO',1,5);
+
+insert into detalleeventos (quantity,createdby,modifiedby,idevento,idplaga) 
+values (4,'YO','YO',2,5);
+
+insert into detalleeventos (quantity,createdby,modifiedby,idevento,idplaga) 
+values (2,'YO','YO',1,9);
+
+insert into detalleeventos (quantity,createdby,modifiedby,idevento,idplaga) 
+values (6,'YO','YO',3,8);
+
+insert into detalleeventos (quantity,createdby,modifiedby,idevento,idplaga) 
+values (6,'YO','YO',3,14);
+
+select * from detalleeventos 
+
+
+select e.id,pl.name,ct.numerotrampa,e.semana,e.fechaevento,de.quantity,p.name from eventos e
+inner join detalleeventos de on e.id = de.idevento
+inner join plagas p on de.idplaga = p.id
+inner join configuraciontrampas ct  on e.idconfiguraciontrampa=ct.id
+inner join plantas pl on ct.idplanta = pl.id
+
+
+--sumar las plagas, filtar por intervlo de fechas y por planta
+
+select SUM(de.quantity) as quantity,p.name,e.fechaevento 
+from eventos e
+inner join detalleeventos de on e.id = de.idevento
+inner join plagas p on de.idplaga = p.id
+inner join configuraciontrampas ct  on e.idconfiguraciontrampa=ct.id
+inner join plantas pl on ct.idplanta = pl.id
+where pl.id = 1 and e.fechaevento >='2016-01-04' and e.fechaevento <='2016-02-28'
+group by p.name,e.fechaevento 
+
+--group by de.quantity,p.name 
