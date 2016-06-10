@@ -30,6 +30,8 @@ class ChartController extends Controller
           'plagas.name',
           'eventos.fechaevento')
           ->where('plantas.id',  $idPlanta)
+          ->where('eventos.fechaevento','>=',  '2016-01-04')
+          ->where('eventos.fechaevento','<=',  '2016-02-28')
           ->groupBy('plagas.name','eventos.fechaevento')
           ->get();
 

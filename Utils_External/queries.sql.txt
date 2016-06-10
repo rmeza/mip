@@ -26,6 +26,12 @@ values (6,'YO','YO',3,8);
 insert into detalleeventos (quantity,createdby,modifiedby,idevento,idplaga) 
 values (6,'YO','YO',3,14);
 
+insert into detalleeventos (quantity,createdby,modifiedby,idevento,idplaga) 
+values (6,'YO','YO',3,18);
+
+insert into detalleeventos (quantity,createdby,modifiedby,idevento,idplaga) 
+values (6,'YO','YO',3,27);
+
 select * from detalleeventos 
 
 
@@ -37,14 +43,14 @@ inner join plantas pl on ct.idplanta = pl.id
 
 
 --sumar las plagas, filtar por intervlo de fechas y por planta
-
+-- filtrar por clasificacion tambien
 select SUM(de.quantity) as quantity,p.name,e.fechaevento 
 from eventos e
 inner join detalleeventos de on e.id = de.idevento
 inner join plagas p on de.idplaga = p.id
 inner join configuraciontrampas ct  on e.idconfiguraciontrampa=ct.id
 inner join plantas pl on ct.idplanta = pl.id
-where pl.id = 1 and e.fechaevento >='2016-01-04' and e.fechaevento <='2016-02-28'
+where pl.id = 1 and ct.idclasificaiontrampa = 3 and e.fechaevento >='2016-01-04' and e.fechaevento <='2016-02-28'
 group by p.name,e.fechaevento 
 
 --group by de.quantity,p.name 
