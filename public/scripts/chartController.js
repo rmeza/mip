@@ -15,7 +15,31 @@
 		}).error(function(error) {
 			vm.error = error;
 		});
-		
+
+
+		vm.Graph = function() {
+			var filters = {
+				idPlanta:$rootScope.selectedPlanta.id,
+				dateStart: vm.datestart,
+				dateEnd: vm.dateend,
+				clasificacionTrampa: vm.selectedClasificacionTrampa
+			};
+			console.log(filters);
+
+			$http({
+				method: 'GET',
+				url: 'api/showweekly/filter',
+				params: filters,
+				headers: {'Content-Type': 'application/json'}
+			}).success(function(response) {
+				console.log(response);
+
+			}).error(function(response) {
+				console.log(response);
+			});
+
+		};
+
 
 		var chart = c3.generate({
 			bindto: '#chart',

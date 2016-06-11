@@ -27,7 +27,7 @@ Route::group(['prefix' => 'api'], function()
     Route::get('planta','PlantaController@index');
     Route::get('evento','EventoController@index');
     Route::get('showdetalleevento/{id}','EventoController@showdetail');
-    Route::get('sowweekly/{id}','ChartController@weeklyByDates');
+    Route::get('showweekly/filter','ChartController@weeklyGraph');
 
 
 

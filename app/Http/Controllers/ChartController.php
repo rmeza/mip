@@ -17,7 +17,7 @@ class ChartController extends Controller
       $this->middleware('jwt.auth');
   }
 
-  public function weeklyByDates($idPlanta)
+  public function weeklyGraph(Request $request)
   {
       // Retrieve all  in the database and return them
       //$trampas = Configuraciontrampa::all();
@@ -29,9 +29,10 @@ class ChartController extends Controller
           ->select(DB::raw('SUM(detalleeventos.quantity) as quantity'),
           'plagas.name',
           'eventos.fechaevento')
-          ->where('plantas.id',  $idPlanta)
-          ->where('eventos.fechaevento','>=',  '2016-01-04')
-          ->where('eventos.fechaevento','<=',  '2016-02-28')
+          ->where('plantas.id',  $request->input('idPlanta'))
+          ->where('configuraciontrampas.idclasificaiontrampa',  $request->input('clasificacionTrampa'))
+          ->where('eventos.fechaevento','>=',   $request->input('dateStart'))
+          ->where('eventos.fechaevento','<=',  $request->input('dateEnd'))
           ->groupBy('plagas.name','eventos.fechaevento')
           ->get();
 
