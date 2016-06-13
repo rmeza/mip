@@ -27,13 +27,14 @@ class ChartController extends Controller
           ->join('configuraciontrampas', 'eventos.idconfiguraciontrampa', '=', 'configuraciontrampas.id')
           ->join('plantas', 'configuraciontrampas.idplanta', '=', 'plantas.id')
           ->select(DB::raw('SUM(detalleeventos.quantity) as quantity'),
-          'plagas.name',
+          'plagas.name as plaga',
           'eventos.fechaevento')
           ->where('plantas.id',  $request->input('idPlanta'))
           ->where('configuraciontrampas.idclasificaiontrampa',  $request->input('clasificacionTrampa'))
           ->where('eventos.fechaevento','>=',   $request->input('dateStart'))
           ->where('eventos.fechaevento','<=',  $request->input('dateEnd'))
           ->groupBy('plagas.name','eventos.fechaevento')
+          ->orderBy('eventos.fechaevento','asc')
           ->get();
 
       return $eventos;

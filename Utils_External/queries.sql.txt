@@ -7,7 +7,7 @@ insert into eventos (semana,fechaevento,createdby,modifiedby,idconfiguraciontram
 values (2,'2016-01-04','YO','YO',1);
 
 insert into eventos (semana,fechaevento,createdby,modifiedby,idconfiguraciontrampa) 
-values (2,'2016-01-04','YO','YO',2);
+values (2,'2016-01-11','YO','YO',2);
 
 select * from eventos 
 
@@ -27,10 +27,10 @@ insert into detalleeventos (quantity,createdby,modifiedby,idevento,idplaga)
 values (6,'YO','YO',3,14);
 
 insert into detalleeventos (quantity,createdby,modifiedby,idevento,idplaga) 
-values (6,'YO','YO',3,18);
+values (6,'YO','YO',4,18);
 
 insert into detalleeventos (quantity,createdby,modifiedby,idevento,idplaga) 
-values (6,'YO','YO',3,27);
+values (6,'YO','YO',4,27);
 
 select * from detalleeventos 
 
@@ -52,5 +52,8 @@ inner join configuraciontrampas ct  on e.idconfiguraciontrampa=ct.id
 inner join plantas pl on ct.idplanta = pl.id
 where pl.id = 1 and ct.idclasificaiontrampa = 3 and e.fechaevento >='2016-01-04' and e.fechaevento <='2016-02-28'
 group by p.name,e.fechaevento 
+order by e.fechaevento ASC
 
 --group by de.quantity,p.name 
+
+
