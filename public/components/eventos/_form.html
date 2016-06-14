@@ -37,8 +37,8 @@
 <div class="form-group">
   <label for="" class="col-sm-2 control-label" >Fecha </label>
   <div class="col-sm-10">
-    <input type="date" name="fecha" ng-model="evento.date" ng-change=evento.changeDate(evento.date);
-    required />
+    <input type="date"  name="fecha" ng-model="evento.date"
+    ng-change="evento.changeDate(evento.date);" required />
 
     <span class="help-inline" ng-show="myForm.$submitted || myForm.fecha.$touched">
       <span class="error" ng-show="myForm.fecha.$error.required">

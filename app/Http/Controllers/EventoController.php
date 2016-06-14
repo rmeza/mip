@@ -25,7 +25,9 @@ class EventoController extends Controller
           ->join('configuraciontrampas', 'configuraciontrampas.id', '=', 'eventos.idconfiguraciontrampa')
           ->join('clasificaciontrampas', 'clasificaciontrampas.id', '=', 'configuraciontrampas.idclasificaiontrampa')
           ->join('ubicaciones', 'ubicaciones.id', '=', 'configuraciontrampas.idubicacion')
+          ->join('plantas', 'configuraciontrampas.idplanta', '=', 'plantas.id')
           ->select('eventos.id','configuraciontrampas.numerotrampa',
+          'plantas.name as planta',
           'ubicaciones.name as ubicacionname',
           'clasificaciontrampas.name as clasificacionname',
           'eventos.fechaevento',
@@ -88,7 +90,7 @@ class EventoController extends Controller
   $evento->description = $request->input('descripcion');
 
   $evento->save();
-  return $evento->idconfiguraciontrampa;
+  return $evento->id;
   }
 
 

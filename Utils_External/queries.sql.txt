@@ -57,18 +57,9 @@ order by e.fechaevento ASC
 --group by de.quantity,p.name 
 
 /*
-
-
-fields read only
 mostrar tipo en form eventos
-semana parse to int sin cero ala izq.
-mostrar tipo planta en view eventos
-quitar observaciones en view eventos
+mostrar tipo  en view eventos
 mostrar eventos en view, filtrados por planta selected
-fix: ngModel:datefmt] Expected 
-
-
-
 
 */
 
