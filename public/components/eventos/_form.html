@@ -1,0 +1,86 @@
+
+<h3>Formulario de eventos</h3>
+<div  class="form-group">
+  <label for="idconfigtrampa" class="col-sm-2 control-label">Seleccione configuraci&oacute;n de trampa</label>
+  <div class="col-sm-10">
+    
+    <select name="idconfigtrampa" class="form-control" ng-model="evento.selectedConfigTrampa" 
+    ng-change=evento.showConfiguraciones(evento.selectedConfigTrampa);
+      ng-options="config.id as config.numerotrampa for config in evento.configuracionesIds" required >
+      <option value="">Selecciona un numero de trampa</option>
+      </select>
+
+    <span  class="help-inline1" ng-show="myForm.$submitted || myForm.idconfigtrampa.$touched">
+      <span ng-show="myForm.idconfigtrampa.$error.required">El campo  numero configuracion de trampa es obligatorio</span>
+    </span>
+  </div>
+</div>
+<!-- <span>Selected clasificacion id is {{selectedClasificacionTrampa.id}}</span> -->
+<div class="form-group">
+  <label for="idubicacion" class="col-sm-2 control-label">Ubicaci&oacute;n Trampa</label>
+  <div class="col-sm-10">
+
+   <input type="text" class="form-control" name="idubicacion" placeholder=" Ubicaci&oacute;n trampa" ng-model="evento.ubicacion" />
+      <span class="help-inline" ng-show="myForm.$submitted || myForm.idubicacion.$touched">
+        <span ng-show="myForm.idubicacion.$error.required">El campo ubicaci&oacute;n es obligatorio</span>
+      </span>
+    </span>
+  </div>
+</div>
+
+
+<!-- <span>Selected clasificacion id is {{selectedClasificacionTrampa.id}}</span> -->
+<div class="form-group">
+  <label for="idubicacion" class="col-sm-2 control-label">Clasificaci&oacute;n Trampa</label>
+  <div class="col-sm-10">
+
+   <input type="text" class="form-control" name="idclasificacion" placeholder=" clasificaci&oacute;n trampa" ng-model="evento.clasificacion" />
+      <span class="help-inline" ng-show="myForm.$submitted || myForm.idclasificacion.$touched">
+        <span ng-show="myForm.idclasificacion.$error.required">El campo clasificaci&oacute;n es obligatorio</span>
+      </span>
+    </span>
+  </div>
+</div>
+
+<div class="form-group">
+<label for="" class="col-sm-2 control-label" >Fecha </label>
+    <div class="col-sm-10">
+      <input type="date" name="fecha" ng-model="evento.date" ng-change=evento.changeDate(evento.date);
+       value="{{ fecha | date: 'dd/MM/yyyy' }}" required />
+        
+      
+
+        <span class="help-inline" ng-show="myForm.$submitted || myForm.fecha.$touched">
+            <span class="error" ng-show="myForm.fecha.$error.required">
+            Required!</span>
+            <span class="error" ng-show="myForm.fecha.$error.invalidDate">
+            Not a valid date!</span>
+            </span>   
+       </span>
+      
+
+    </div>
+  
+  </div>
+
+
+<div class="form-group">
+  <label for="semana" class="col-sm-2 control-label">Semana</label>
+  <div class="col-sm-10">
+      <input type="text" class="form-control" name="semana" placeholder=" Numero de Semana" ng-model="evento.semana" />
+  </div>
+</div>
+
+
+<!-- <span>Selected ubicacion is {{selectedUbicacion.id}}</span> -->
+<div class="form-group">
+  <label for="description" class="col-sm-2 control-label">Descripci&oacute;n</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" name="description" placeholder=" Descripci&oacute;n" ng-model="trampa.descripcion" />
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <input type="submit" class="btn btn-primary" value="Save" ng-disabled="myForm.$invalid " />
+  </div>
+</div>

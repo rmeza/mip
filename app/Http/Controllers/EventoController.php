@@ -31,12 +31,13 @@ class EventoController extends Controller
           'eventos.fechaevento',
           'eventos.semana',
           'eventos.description')
+          ->orderBy('eventos.fechaevento','desc')
           ->get();
 
       return $eventos;
   }
 
-  public function ShowDetail($id)
+  public function showDetail($id)
   {
       // Retrieve all  in the database and return them
       //$trampas = Configuraciontrampa::all();
@@ -50,26 +51,44 @@ class EventoController extends Controller
       return $detalle;
   }
 
+  public function showConfiguraciones($id)
+  {
+      $configuraciones=DB::table('configuraciontrampas')
+      ->join('clasificaciontrampas', 'clasificaciontrampas.id', '=', 'configuraciontrampas.idclasificaiontrampa')
+      ->join('ubicaciones', 'ubicaciones.id', '=', 'configuraciontrampas.idubicacion')
+      ->select('configuraciontrampas.id','configuraciontrampas.numerotrampa',
+          'ubicaciones.name as ubicacionname',
+          'clasificaciontrampas.name as clasificacionname')
+      ->where('configuraciontrampas.id','=',$id)
+      ->get();
+      return $configuraciones;
+  }
+
+  public function showconfiguracionesIDs()
+  {
+      $configuraciones=DB::table('configuraciontrampas') 
+      ->select('configuraciontrampas.id','configuraciontrampas.numerotrampa')
+      ->get();
+      return $configuraciones;
+  }
+
   /**
   * Store a nuew configuration trampa.
   * @param  Request  $request
   * @return Response
   */
   public function store(Request $request) {
-  $trampa = new Configuraciontrampa;
+  $evento = new Evento;
+  //TODO
+  $evento->idconfiguraciontrampa= $request->input('idconfigtrampa');
+  $evento->createdby = 'Yo';
+  $evento->modifiedby = 'yoo';
+  $evento->fechaevento = $request->input('fecha');
+  $evento->semana = $request->input('semana');
+  $evento->description = $request->input('descripcion');
 
-
-  $trampa->numerotrampa = $request->input('numerotrampa');
-  $trampa->description = $request->input('descripcion');
-  $trampa->createdby = 'Yo';
-  $trampa->modifiedby = 'yoo';
-  $trampa->idplanta = $request->input('idplanta');
-  $trampa->idubicacion = $request->input('ubicacion');
-  $trampa->idtipotrampa = $request->input('tipotrampa');
-  $trampa->idclasificaiontrampa = $request->input('clasificiontrampa');
-
-  $trampa->save();
-  return $trampa->numerotrampa;
+  $evento->save();
+  return $evento->idconfiguraciontrampa;
   }
 
 
