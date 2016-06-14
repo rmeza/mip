@@ -66,7 +66,7 @@ class EventoController extends Controller
 
   public function showconfiguracionesIDs()
   {
-      $configuraciones=DB::table('configuraciontrampas') 
+      $configuraciones=DB::table('configuraciontrampas')
       ->select('configuraciontrampas.id','configuraciontrampas.numerotrampa')
       ->get();
       return $configuraciones;
@@ -81,8 +81,8 @@ class EventoController extends Controller
   $evento = new Evento;
   //TODO
   $evento->idconfiguraciontrampa= $request->input('idconfigtrampa');
-  $evento->createdby = 'Yo';
-  $evento->modifiedby = 'yoo';
+  $evento->createdby = $request->input('createdby');
+  $evento->modifiedby = $request->input('modifiedby');
   $evento->fechaevento = $request->input('fecha');
   $evento->semana = $request->input('semana');
   $evento->description = $request->input('descripcion');
