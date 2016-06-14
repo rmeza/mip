@@ -7,7 +7,7 @@
   .config(function($stateProvider) {
 
     $stateProvider
-    
+
     .state('eventos', {
       url: '/eventos',
       templateUrl: '/components/eventos/eventosView.html',
@@ -21,7 +21,7 @@
     .state('newDetalleEvento', {
       url: '/detallesEvento/new',
       templateUrl: '/components/eventos/detallesAdd.html',
-      controller: 'EventoController as evento'
+      controller: 'DetalleEventoController as detalleevento'
     })
 
   })

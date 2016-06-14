@@ -87,4 +87,5 @@
     <script src="scripts/inicioController.js"></script>
     <script src="/components/charts/chart.js"></script>
     <script src="scripts/chartController.js"></script>
+    <script src="scripts/detalleeventoController.js"></script
 </html>

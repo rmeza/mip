@@ -44,13 +44,13 @@
       <td class="col-sm-2">{{  item.fechaevento }}</td>
       <td class="col-sm-2">{{  item.semana }}</td>
 
-      <td>
+      <!--td>
         <button class="btn btn-default btn-xs btn-detail" ui-sref="editEvento" >
           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Edit </button>
         </td>
         <td>
           <button class="btn btn-danger btn-xs btn-delete" ng-click="deleteEvento(item.id)" >Delete</button>
-        </td>
+        </td-->
 
       </tr>
       <tr class="row" ng-show="evento.active==item.id" ng-repeat-end="">
@@ -61,9 +61,11 @@
                 <th class="col-sm-2"></th>
                 <th class="col-sm-2" >Plaga</th>
                 <th class="col-sm-2" >Cantidad</th>
-                <th><button class="btn btn-primary">
-                  <i class="fa fa-plus-circle fa-fw" ui-sref="newDetalleEvento"></i>
-                  &nbsp; Agregar plaga</button></th>
+                <th>
+                  <button ui-sref="newDetalleEvento"  type="button" class="btn btn-primary ">
+                    <i class="fa fa-plus-circle fa-fw"></i>&nbsp; Agregar Plaga
+                  </button>
+                </th>
                 </tr>
               </thead>
               <tbody>
@@ -79,3 +81,5 @@
         </tr>
       </tbody>
     </table>
+
+  

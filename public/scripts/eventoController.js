@@ -112,28 +112,6 @@
 		};
 
 
-		vm.addDetalleEvento = function(id) {
-			var objdetalleEvento = {
-
-				idevento:id,
-				plaga:vm.plaga,
-				cantidad:vm.cantidad,
-				createdby: $rootScope.currentUser.email,
-				modifiedby:$rootScope.currentUser.email
-			};
-
-			$http({
-				method: 'POST',
-				url: 'api/detalleEvento',
-				data: objdetalleEvento,
-				headers: {'Content-Type': 'application/json'}
-			}).success(function(response) {
-				console.log(response);
-				$state.go('eventos');
-			}).error(function(response) {
-				console.log(response);
-			});
-		};
 	}
 
 })();
