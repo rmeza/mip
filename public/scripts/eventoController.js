@@ -15,15 +15,16 @@
 		vm.detalles;
 		vm.configuracionesIds
 		vm.error;
-		vm.date=Date(vm.date);
+		//vm.date=Date(vm.date);
 
 
 
 		//obtiene numero de semana dada una fecha
 	     vm.changeDate =function( date) {
-	    	
-	    	vm.date= $filter('date')(vm.date, "yyyy-MM-dd");
-	    	vm.semana= $filter('date')(vm.date, "ww");
+
+	    	//vm.date= $filter('date')(date, "yyyy-MM-dd");
+	    	vm.semana= $filter('date')(date, "ww");
+				vm.semana = Number(vm.semana) +1;
 	        console.log( "vm.date:", vm.date );
 	        console.log( "vm.semana:", vm.semana );
 	    };
@@ -47,7 +48,7 @@
 			vm.error = error;
 		});
 
-	
+
 
 		vm.showConfiguraciones=function(id){
 
@@ -84,7 +85,7 @@
 			});
 		};
 
-		
+
 
 		vm.addEvento = function() {
 			var objEvento = {
