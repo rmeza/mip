@@ -128,6 +128,10 @@
 				}
 			}
 		});
+	})
+	.service("EventoService", function (){
+		var id_evento;
+		return id_evento;
 	});
 
 })();

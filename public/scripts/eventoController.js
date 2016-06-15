@@ -6,7 +6,7 @@
 	.module('authApp')
 	.controller('EventoController',EventoController)
 
-	function EventoController($http, $auth, $rootScope,$state,$scope,$filter) {
+	function EventoController($http, $auth, $rootScope,$state,$scope,$filter,EventoService) {
 
 
 		var vm = this;
@@ -51,10 +51,6 @@
 		});
 
 		
-			
-		
-
-
 
 		vm.showConfiguraciones=function(id){
 
@@ -91,8 +87,6 @@
 			});
 		};
 
-
-
 		vm.addEvento = function() {
 			var objEvento = {
 
@@ -116,6 +110,11 @@
 				console.log(response);
 			});
 		};
+
+		vm.sessionEvento= function (id){
+			EventoService.id_evento=id;
+			console.log('ahora el servicio es:'+EventoService.id_evento);
+		}
 
 	}
 
