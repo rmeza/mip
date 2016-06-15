@@ -14,7 +14,7 @@ class CreateConfiguraciontrampasTable extends Migration
      {
        Schema::create('configuraciontrampas', function ($table) {
          $table->increments('id');
-         $table->string('numerotrampa');
+         $table->integer('numerotrampa');
          $table->string('description')->nullable();
          $table->string('createdby');
          $table->string('modifiedby');
