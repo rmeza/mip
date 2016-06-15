@@ -74,6 +74,7 @@ class EventoController extends Controller
       return $configuraciones;
   }
 
+  
   /**
   * Store a nuew configuration trampa.
   * @param  Request  $request

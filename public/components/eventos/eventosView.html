@@ -22,7 +22,7 @@
   </thead>
   <tbody >
 
-    <tr  ng-repeat-start="item in evento.eventos" ng-click="evento.showDetalle(item.id)">
+    <tr  ng-repeat-start="item in evento.eventos" ng-click="evento.sessionEvento(item.id); evento.showDetalle(item.id)">
       <td>
         <div class="col-sm-2 text-right">
           <a href="">

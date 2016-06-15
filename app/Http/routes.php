@@ -29,7 +29,11 @@ Route::group(['prefix' => 'api'], function()
     Route::get('showDetalleEvento/{id}','EventoController@showDetail');
     Route::get('showConfiguracion/{id}','EventoController@showConfiguraciones');
     Route::get('showConfiguracionIds', 'EventoController@showconfiguracionesIDs');
+
+    Route::get('showPlagas', 'PlagaController@showplagas');
     Route::get('showweekly/filter','ChartController@weeklyGraph');
     Route::post('evento','EventoController@store');
+    Route::post('detalleEvento','DetalleEventoController@store');
+
 
 });

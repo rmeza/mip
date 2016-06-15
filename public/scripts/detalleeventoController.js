@@ -9,19 +9,21 @@
 	function DetalleEventoController($http, $auth, $rootScope,$state,$scope) {
 
 		var vm = this;
+		vm.plagas;
 
-		$http.get('api/plaga')
-		.success(function(plagas) {
-			vm.plaas = plagas;
-		})
-		.error(function(error) {
-			vm.error = error;
+		
+		$http.get('api/showPlagas')
+			.success(function(plagas) {
+				vm.plagas=plagas;
+			})
+			.error(function(error) {
+				vm.error = error;
 		});
 
-		vm.addDetalleEvento = function(id) {
+		vm.addDetalleEvento = function() {
 			var objdetalleEvento = {
 
-				idevento:id,
+				idevento:'10',//vm.idevento,
 				idplaga:vm.selectedPlaga,
 				quantity:vm.quantity,
 				createdby: $rootScope.currentUser.email,
