@@ -38,10 +38,10 @@
 				data: objdetalleEvento,
 				headers: {'Content-Type': 'application/json'}
 			}).success(function(response) {
-				
+				console.log(response);
 				$state.go('eventos');
 			}).error(function(response) {
-				
+				console.log(response);
 			});
 		};
 		

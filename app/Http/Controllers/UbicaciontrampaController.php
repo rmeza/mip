@@ -18,7 +18,7 @@ class UbicaciontrampaController extends Controller
 
   public function index()
   {
-    $ubicaciones = Ubicacion::all();
+    $ubicaciones = Ubicacion::orderBy('name')->get(); //::all();
     return $ubicaciones;
   }
 }
