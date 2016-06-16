@@ -66,15 +66,16 @@ class EventoController extends Controller
       return $configuraciones;
   }
 
-  public function showconfiguracionesIDs()
+  public function showconfiguracionesIDs($idplanta)
   {
       $configuraciones=DB::table('configuraciontrampas')
       ->select('configuraciontrampas.id','configuraciontrampas.numerotrampa')
+      ->where('configuraciontrampas.idplanta','=',$idplanta)
       ->get();
       return $configuraciones;
   }
 
-  
+
   /**
   * Store a nuew configuration trampa.
   * @param  Request  $request

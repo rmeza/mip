@@ -28,7 +28,7 @@ Route::group(['prefix' => 'api'], function()
     Route::get('evento','EventoController@index');
     Route::get('showDetalleEvento/{id}','EventoController@showDetail');
     Route::get('showConfiguracion/{id}','EventoController@showConfiguraciones');
-    Route::get('showConfiguracionIds', 'EventoController@showconfiguracionesIDs');
+    Route::get('showConfiguracionIds/{idplanta}', 'EventoController@showconfiguracionesIDs');
 
     Route::get('showPlagas', 'PlagaController@showplagas');
     Route::get('showweekly/filter','ChartController@weeklyGraph');

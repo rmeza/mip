@@ -35,7 +35,12 @@
 		});
 
 		//Fill combo trampa
-		$http.get('api/showConfiguracionIds')
+		var idplanta;
+		if($rootScope.selectedPlanta.id)
+			idplanta =  $rootScope.selectedPlanta.id;
+			
+		if(idplanta){
+		$http.get('api/showConfiguracionIds/'+ idplanta)
 		.success(function(configuracionesIds) {
 			vm.configuracionesIds = configuracionesIds;
 			console.log(vm.configuracionesIds);
@@ -43,7 +48,7 @@
 		.error(function(error) {
 			vm.error = error;
 		});
-
+}
 		//Get trampa selected and fill inputs
 		vm.showConfiguraciones=function(id){
 
