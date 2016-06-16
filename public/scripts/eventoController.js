@@ -8,24 +8,21 @@
 
 	function EventoController($http, $auth, $rootScope,$state,$scope,$filter,EventoService) {
 
-
 		var vm = this;
-
 		vm.eventos;
 		vm.detalles;
 		vm.configuracionesIds
 		vm.error;
-
 		//vm.date=Date(vm.date);
 
 		//obtiene numero de semana dada una fecha
-	     vm.changeDate =function( date) {
-	    	//vm.date= $filter('date')(date, "yyyy-MM-dd");
-	    	vm.semana= $filter('date')(date, "ww");
-				vm.semana = Number(vm.semana) +1;
-	        console.log( "vm.date:", vm.date );
-	        console.log( "vm.semana:", vm.semana );
-	    };
+		vm.changeDate =function( date) {
+			//vm.date= $filter('date')(date, "yyyy-MM-dd");
+			vm.semana= $filter('date')(date, "ww");
+			vm.semana = Number(vm.semana) +1;
+			console.log( "vm.date:", vm.date );
+			console.log( "vm.semana:", vm.semana );
+		};
 
 
 		//Grab the list of eventos from the API
@@ -37,10 +34,7 @@
 			vm.error = error;
 		});
 
-
-		
-
-
+		//Fill combo trampa
 		$http.get('api/showConfiguracionIds')
 		.success(function(configuracionesIds) {
 			vm.configuracionesIds = configuracionesIds;
@@ -50,8 +44,7 @@
 			vm.error = error;
 		});
 
-		
-
+		//Get trampa selected and fill inputs
 		vm.showConfiguraciones=function(id){
 
 			$http.get('api/showConfiguracion/'+id)
@@ -72,18 +65,18 @@
 		vm.showDetalle=function (id){
 			console.log("valor del activo:"+vm.active)
 			if (vm.active != id) {
-			vm.active = id;
+				vm.active = id;
 			}
 			else {
-			vm.active = null;
+				vm.active = null;
 			}
 
 			$http.get('api/showDetalleEvento/'+id)
 			.success(function(detalles) {
-			vm.detalles = detalles;
+				vm.detalles = detalles;
 			})
 			.error(function(error) {
-			vm.error = error;
+				vm.error = error;
 			});
 		};
 
