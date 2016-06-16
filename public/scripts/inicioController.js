@@ -6,16 +6,16 @@
 	.module('authApp')
 	.controller('InicioController', InicioController);
 
-	function InicioController($http, $auth, $rootScope, $state) {
+	function InicioController($http, $auth,  $state) {
 
 		var vm = this;
-		//vm.plantas;
+		vm.plantas;
 		vm.error;
 
 		//Grab the list of plantas from the API
 		$http.get('api/planta').success(function(plantas) {
 			//vm.plantas = plantas;
-			$rootScope.plantas = plantas;
+			vm.plantas = plantas;
 			var plantasObject = JSON.stringify(plantas);
 			// Set the stringified user data into local storage
 			localStorage.setItem('plantas', plantasObject);
@@ -24,6 +24,13 @@
 		}).error(function(error) {
 			vm.error = error;
 		});
+
+		vm.SetPlanta = function(id)
+		{
+			
+			console.log(id);
+		};
+
 
 	}
 

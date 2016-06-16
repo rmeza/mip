@@ -1,16 +1,16 @@
 <div class="container jumbotron">
 
-  <div class="row">
-    <div class="col-xs-6 col-md-4">
-      <a class="btn btn-lg btn-success" href="#" ng-model="wetid" ng-value="1">
-        <i class="fa fa-building-o pull-left" style="font-size: 10em;"></i> Wet
+  <div class="row" >
+    <div class="col-xs-6 col-md-4" ng-repeat="planta in inicio.plantas">
+      <a class="btn btn-lg btn-success" href="#"  ng-click="inicio.SetPlanta(planta.id)">
+        <i class="fa fa-building-o pull-left" style="font-size: 10em;"></i> {{planta.name}}
       </a>
     </div>
-    <div class="col-xs-6 col-md-4">
+    <!--div class="col-xs-6 col-md-4">
       <a class="btn btn-lg btn-primary" href="#" ng-model="dryid" ng-value="2">
         <i class="fa fa-building-o pull-left" style="font-size: 10em"></i> Dry
       </a>
-    </div>
+    <!--/div-->
   </div>
 
 </div>
