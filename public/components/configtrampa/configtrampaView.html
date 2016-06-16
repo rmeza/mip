@@ -10,21 +10,25 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Numero</th>
-      <th>Planta</th>
-      <th>Tipo</th>
-      <th>Clasificacion</th>
+      <th>No. de Trampa</th>
+      <th>Tipo de trampa</th>
       <th>Ubicacion</th>
+      <th>Clasificacion</th>
+      <th>Planta</th>
+      
+      
 
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="trampa in trampa.trampas">
       <td>{{  trampa.numerotrampa }}</td>
-      <td>{{  trampa.name }}</td>
       <td>{{  trampa.tiponame }}</td>
-      <td>{{  trampa.clasificacionname }}</td>
       <td>{{  trampa.ubicacionname }}</td>
+      <td>{{  trampa.clasificacionname }}</td>
+      <td>{{  trampa.name }}</td>
+      
+      
       <td>
         <script type="text/ng-template" id="myModalContent.html">
           <div class="modal-header">

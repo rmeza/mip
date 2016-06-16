@@ -29,6 +29,7 @@ class ConfiguraciontrampaController extends Controller
           ->select('configuraciontrampas.id','configuraciontrampas.numerotrampa', 'plantas.name',
                    'tipotrampas.name as tiponame','clasificaciontrampas.name as clasificacionname',
                    'ubicaciones.name as ubicacionname')
+          ->orderBy('configuraciontrampas.numerotrampa', 'asc')
           ->get();
 
       return $trampas;
