@@ -6,16 +6,19 @@
 	.module('authApp')
 	.controller('EventoController',EventoController)
 
-	function EventoController($http, $auth, $rootScope,$state,$scope,$filter,EventoService) {
+	function EventoController($http, $auth, $rootScope,$state,$scope,$filter,EventoService, PlantaService) {
 
 		var vm = this;
 		vm.eventos;
 		vm.detalles;
 		vm.configuracionesIds
 		vm.error;
-		//vm.date=Date(vm.date);
-
-		//obtiene numero de semana dada una fecha
+		
+		/**
+		* @method changeDate - This function calculete the numbre of the week
+		* @parameter date - from a form 
+		* @return semana - the numeber of week correpond to the date given
+		*/
 		vm.changeDate =function( date) {
 			//vm.date= $filter('date')(date, "yyyy-MM-dd");
 			vm.semana= $filter('date')(date, "ww");
@@ -25,7 +28,10 @@
 		};
 
 
-		//Grab the list of eventos from the API
+		/**
+		* @method  - This function get a object of eventos 
+		* @return eventos - the object that contains all eventos
+		*/
 		$http.get('api/evento')
 		.success(function(eventos) {
 			vm.eventos = eventos;
@@ -34,22 +40,28 @@
 			vm.error = error;
 		});
 
-		//Fill combo trampa
-		var idplanta;
-		if($rootScope.selectedPlanta.id)
-			idplanta =  $rootScope.selectedPlanta.id;
-			
+		/**
+		* @method  - This function get a object of configurations
+		* @parameter idplanta - identifier of the planta selected
+		* @return configuracionesIds - the object that contains all configurations
+		*/
+		var idplanta =  PlantaService.id_planta;			
 		if(idplanta){
-		$http.get('api/showConfiguracionIds/'+ idplanta)
-		.success(function(configuracionesIds) {
-			vm.configuracionesIds = configuracionesIds;
-			console.log(vm.configuracionesIds);
-		})
-		.error(function(error) {
-			vm.error = error;
-		});
-}
-		//Get trampa selected and fill inputs
+			$http.get('api/showConfiguracionIds/'+ idplanta)
+			.success(function(configuracionesIds) {
+				vm.configuracionesIds = configuracionesIds;
+				console.log(vm.configuracionesIds);
+			})
+			.error(function(error) {
+				vm.error = error;
+			});
+		}
+
+		/**
+		* @method showConfiguraciones - This function get ubicacion y clasificacion for a form
+		* @parameter id - identifier of the configured trampa
+		* @return ubicacion, clasificacion - is a data binding to evento form
+		*/
 		vm.showConfiguraciones=function(id){
 
 			$http.get('api/showConfiguracion/'+id)
@@ -64,9 +76,12 @@
 
 		};
 
-		//todo probar que funcione
-		//obtiene los detalles de un evento
-		// hace visible o invisible el detalle, dado un numero de trampa
+		/**
+		* @method showDetalle - This function get detalles from eventos
+		* @parameter id - identifier of evento
+		* @return actived - is a data binding to put invisible/visible a detail for a event
+		* @return detalles - is a object to get the data of evento detail
+		*/ 
 		vm.showDetalle=function (id){
 			console.log("valor del activo:"+vm.active)
 			if (vm.active != id) {
@@ -85,6 +100,15 @@
 			});
 		};
 
+		/**
+		* @method addEvento - This function store events
+		* @parameter selectedConfigTrampa- identifier of configured trampa 
+		* @parameter date- event date 
+		* @parameter semana - number of week correpond to the event date
+		* @parameter description - description of the event
+		* @parameter createdby- user mail of the current user   
+		* @return objEvento - is a object to sent to store
+		*/ 
 		vm.addEvento = function() {
 			var objEvento = {
 
@@ -109,6 +133,10 @@
 			});
 		};
 
+		/**
+		* @method sessionEvento - This function set the id_event 
+		* @parameter id - is a identifier to pass to the detalles controller  
+		*/ 
 		vm.sessionEvento= function (id){
 			EventoService.id_evento=id;
 			console.log('ahora el servicio es:'+EventoService.id_evento);
