@@ -8,7 +8,7 @@
 	.controller('ConfiguraciontrampaController',ConfiguraciontrampaController)
 
 
-	function ConfiguraciontrampaController($http, $auth, $rootScope,$state,$scope,$uibModal, $log) {
+	function ConfiguraciontrampaController($http, $auth,$state,$scope,$uibModal, $log, $rootScope,PlantaService) {
 
 
 		var vm = this;
@@ -122,7 +122,7 @@
 			var objTrampa = {
 
 				numerotrampa:vm.numerotrampa,
-				idplanta:$rootScope.selectedPlanta.id,
+				idplanta:PlantaService.id_planta,
 				tipotrampa:vm.selectedTipoTrampa,
 				clasificiontrampa:vm.selectedClasificacionTrampa,
 				ubicacion:vm.selectedUbicacion,
@@ -130,6 +130,8 @@
 				createdby: $rootScope.currentUser.email,
 				modifiedby:$rootScope.currentUser.email
 			};
+
+			console.log(objTrampa);
 
 			$http({
 				method: 'POST',
