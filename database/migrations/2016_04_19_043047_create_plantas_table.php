@@ -15,6 +15,7 @@ class CreatePlantasTable extends Migration
       Schema::create('plantas', function (Blueprint $table) {
          $table->increments('id');
          $table->string('name')->unique();
+         $table->string('cssclass');
          $table->string('description')->nullable();
          $table->timestamps();
      });

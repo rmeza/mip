@@ -14,8 +14,8 @@ class PlantaTableSeeder extends Seeder
     {
       DB::table('plantas')->delete();
       $plantas = array(
-              ['name' => 'DRY', 'description' => 'Planta DRY'],
-              ['name' => 'WET', 'description' => 'Planta WET']
+              ['name' => 'DRY','cssclass'=>'btn btn-lg btn-primary' ,'description' => 'Planta DRY'],
+              ['name' => 'WET', 'cssclass'=>'btn btn-lg btn-success','description' => 'Planta WET']
 
       );
 
