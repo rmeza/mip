@@ -6,11 +6,12 @@
 	.module('authApp')
 	.controller('InicioController', InicioController);
 
-	function InicioController($http, $auth,  $state,PlantaService) {
+	function InicioController($http,$auth,$state,PlantaService,$rootScope) {
 
 		var vm = this;
 		vm.plantas;
 		vm.error;
+
 
 		//Grab the list of plantas from the API
 		$http.get('api/planta').success(function(plantas) {
@@ -19,12 +20,15 @@
 			vm.error = error;
 		});
 
-		vm.SetPlanta = function(id)
+		vm.SetPlanta = function(event,planta)
 		{
-			PlantaService.id_planta=id;
-			console.log("la planta id:"+id);
-			$state.go("eventos");
+			PlantaService.id_planta=planta.id;
+			console.log("la planta id:"+planta.id);
+			$rootScope.plantaSelected=planta.name;
+			event.preventDefault();
+		 $state.go('eventos');
 		};
+
 
 
 	}
