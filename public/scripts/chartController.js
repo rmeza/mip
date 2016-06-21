@@ -6,7 +6,7 @@
 	.module('authApp')
 	.controller('ChartController',ChartController)
 
-	function ChartController($http, $auth, $rootScope,$state,$scope) {
+	function ChartController($http, $auth,$state,$scope,PlantaService) {
 
 		var vm = this;
 
@@ -19,7 +19,7 @@
 
 		vm.Graph = function() {
 			var filters = {
-				idPlanta:$rootScope.selectedPlanta.id,
+				idPlanta:  PlantaService.id_planta,
 				dateStart: vm.datestart,
 				dateEnd: vm.dateend,
 				clasificacionTrampa: vm.selectedClasificacionTrampa
