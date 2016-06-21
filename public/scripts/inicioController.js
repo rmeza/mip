@@ -6,7 +6,7 @@
 	.module('authApp')
 	.controller('InicioController', InicioController);
 
-	function InicioController($http, $auth,  $state) {
+	function InicioController($http, $auth,  $state,PlantaService) {
 
 		var vm = this;
 		vm.plantas;
@@ -21,7 +21,9 @@
 
 		vm.SetPlanta = function(id)
 		{
-			console.log(id);
+			PlantaService.id_planta=id;
+			console.log("la planta id:"+id);
+			$state.go("eventos");
 		};
 
 

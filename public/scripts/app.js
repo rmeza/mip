@@ -132,6 +132,10 @@
 	.service("EventoService", function (){
 		var id_evento;
 		return id_evento;
+	})
+	.service("PlantaService", function(){
+		var id_planta;
+		return id_planta;
 	});
 
 })();
