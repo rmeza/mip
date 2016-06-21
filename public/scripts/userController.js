@@ -40,9 +40,7 @@
 				$rootScope.authenticated = false;
 
 				// Remove the current user info from rootscope
-				$rootScope.currentUser = null;
-				$rootScope.plantas = null;
-				$rootScope.selectedPlanta = null;
+				$rootScope.currentUser = null;								
 				// Redirect to auth (necessary for Satellizer 0.12.5+)
 				$state.go('auth');
 			});
