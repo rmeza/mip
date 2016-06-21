@@ -17,7 +17,7 @@
 		vm.error;
 
 		//Grab the list of trampas from the API
-		$http.get('api/configuraciontrampa').success(function(trampas) {
+		$http.get('api/configuraciontrampa/'+PlantaService.id_planta).success(function(trampas) {
 			vm.trampas = trampas;
 		}).error(function(error) {
 			vm.error = error;

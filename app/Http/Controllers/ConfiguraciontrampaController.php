@@ -17,7 +17,7 @@ class ConfiguraciontrampaController extends Controller
       $this->middleware('jwt.auth');
   }
 
-  public function index()
+  public function index($id)
   {
       // Retrieve all  in the database and return them
       //$trampas = Configuraciontrampa::all();
@@ -29,6 +29,7 @@ class ConfiguraciontrampaController extends Controller
           ->select('configuraciontrampas.id','configuraciontrampas.numerotrampa', 'plantas.name',
                    'tipotrampas.name as tiponame','clasificaciontrampas.name as clasificacionname',
                    'ubicaciones.name as ubicacionname')
+          ->where('plantas.id',  $id)
           ->orderBy('configuraciontrampas.numerotrampa', 'asc')
           ->get();
 

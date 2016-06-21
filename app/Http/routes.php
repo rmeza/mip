@@ -18,7 +18,7 @@ Route::group(['prefix' => 'api'], function()
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'AuthenticateController@authenticate');
     Route::get('authenticate/user','AuthenticateController@getAuthenticatedUser');
-    Route::get('configuraciontrampa','ConfiguraciontrampaController@index');
+    Route::get('configuraciontrampa/{id}','ConfiguraciontrampaController@index');
     Route::post('configuraciontrampa','ConfiguraciontrampaController@store');
     Route::delete('configuraciontrampa/{id}','ConfiguraciontrampaController@destroy');
     Route::get('tipotrampa','TipotrampaController@index');
