@@ -25,7 +25,7 @@ Route::group(['prefix' => 'api'], function()
     Route::get('clasificaciontrampa','ClasificaciontrampaController@index');
     Route::get('ubicaciontrampa','UbicaciontrampaController@index');
     Route::get('planta','PlantaController@index');
-    Route::get('evento','EventoController@index');
+    Route::get('evento/{id}','EventoController@index');
     Route::get('showDetalleEvento/{id}','EventoController@showDetail');
     Route::get('showConfiguracion/{id}','EventoController@showConfiguraciones');
     Route::get('showConfiguracionIds/{idplanta}', 'EventoController@showconfiguracionesIDs');

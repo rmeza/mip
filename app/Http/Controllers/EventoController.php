@@ -17,7 +17,7 @@ class EventoController extends Controller
       $this->middleware('jwt.auth');
   }
 
-  public function index()
+  public function index($idplanta)
   {
       // Retrieve all  in the database and return them
       //$trampas = Configuraciontrampa::all();
@@ -33,6 +33,7 @@ class EventoController extends Controller
           'eventos.fechaevento',
           'eventos.semana',
           'eventos.description')
+          ->where('plantas.id',  $idplanta)
           ->orderBy('eventos.fechaevento','desc')
           ->get();
 

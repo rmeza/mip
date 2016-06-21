@@ -13,10 +13,10 @@
 		vm.detalles;
 		vm.configuracionesIds
 		vm.error;
-		
+
 		/**
 		* @method changeDate - This function calculete the numbre of the week
-		* @parameter date - from a form 
+		* @parameter date - from a form
 		* @return semana - the numeber of week correpond to the date given
 		*/
 		vm.changeDate =function( date) {
@@ -27,12 +27,13 @@
 			console.log( "vm.semana:", vm.semana );
 		};
 
+		var idplanta =  PlantaService.id_planta;
 
 		/**
-		* @method  - This function get a object of eventos 
+		* @method  - This function get a object of eventos
 		* @return eventos - the object that contains all eventos
 		*/
-		$http.get('api/evento')
+		$http.get('api/evento/'+ idplanta)
 		.success(function(eventos) {
 			vm.eventos = eventos;
 		})
@@ -45,7 +46,7 @@
 		* @parameter idplanta - identifier of the planta selected
 		* @return configuracionesIds - the object that contains all configurations
 		*/
-		var idplanta =  PlantaService.id_planta;			
+
 		if(idplanta){
 			$http.get('api/showConfiguracionIds/'+ idplanta)
 			.success(function(configuracionesIds) {
@@ -81,7 +82,7 @@
 		* @parameter id - identifier of evento
 		* @return actived - is a data binding to put invisible/visible a detail for a event
 		* @return detalles - is a object to get the data of evento detail
-		*/ 
+		*/
 		vm.showDetalle=function (id){
 			console.log("valor del activo:"+vm.active)
 			if (vm.active != id) {
@@ -102,13 +103,13 @@
 
 		/**
 		* @method addEvento - This function store events
-		* @parameter selectedConfigTrampa- identifier of configured trampa 
-		* @parameter date- event date 
+		* @parameter selectedConfigTrampa- identifier of configured trampa
+		* @parameter date- event date
 		* @parameter semana - number of week correpond to the event date
 		* @parameter description - description of the event
-		* @parameter createdby- user mail of the current user   
+		* @parameter createdby- user mail of the current user
 		* @return objEvento - is a object to sent to store
-		*/ 
+		*/
 		vm.addEvento = function() {
 			var objEvento = {
 
@@ -134,9 +135,9 @@
 		};
 
 		/**
-		* @method sessionEvento - This function set the id_event 
-		* @parameter id - is a identifier to pass to the detalles controller  
-		*/ 
+		* @method sessionEvento - This function set the id_event
+		* @parameter id - is a identifier to pass to the detalles controller
+		*/
 		vm.sessionEvento= function (id){
 			EventoService.id_evento=id;
 			console.log('ahora el servicio es:'+EventoService.id_evento);
