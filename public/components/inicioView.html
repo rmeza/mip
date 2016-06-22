@@ -1,9 +1,9 @@
 <div class="container jumbotron">
 
   <div class="row" >
-    <div class="col-xs-6 col-md-4" ng-repeat="planta in inicio.plantas">
+    <div class="col-xs-6 col-md-6" ng-repeat="planta in inicio.plantas">
       <a class="{{planta.cssclass}}" href="#"  ng-click="inicio.SetPlanta($event,planta)">
-        <i class="fa fa-building-o pull-left" style="font-size: 10em;"></i> {{planta.name}}
+        <i class="fa fa-building-o pull-left" style="font-size: 10em;"><span style="font-size:40%">{{planta.name}}</span></i>
       </a>
     </div>
     <!--div class="col-xs-6 col-md-4">
