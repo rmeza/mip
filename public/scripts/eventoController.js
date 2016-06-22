@@ -8,6 +8,9 @@
 
 	function EventoController($http, $auth, $rootScope,$state,$scope,$filter,EventoService, PlantaService) {
 
+		if(!PlantaService.id_planta)
+				$state.go('inicio');
+				
 		var vm = this;
 		vm.eventos;
 		vm.detalles;

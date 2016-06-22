@@ -8,6 +8,9 @@
 
 	function ChartController($http, $auth,$state,$scope,PlantaService) {
 
+		if(!PlantaService.id_planta)
+				$state.go('inicio');
+				
 		var vm = this;
 
 		$http.get('api/clasificaciontrampa').success(function(clasificaciones) {

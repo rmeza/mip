@@ -6,7 +6,7 @@
 		.module('authApp')
 		.controller('LogoutController',LogoutController);
 
-	function LogoutController($http, $auth, $rootScope, $state) {
+	function LogoutController($http, $auth, $rootScope, $state,PlantaService) {
 		$auth.logout().then(function() {
 			// Remove the authenticated user from local storage
 			localStorage.removeItem('user');
@@ -21,6 +21,7 @@
 			//$rootScope.plantas = null;
 			//$rootScope.selectedPlanta = null;
 			$rootScope.plantaSelected = '';
+			PlantaService.id_planta = null;
 			// Redirect to auth (necessary for Satellizer 0.12.5+)
 			$state.go('auth');
 		});

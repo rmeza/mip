@@ -10,7 +10,9 @@
 
 	function ConfiguraciontrampaController($http, $auth,$state,$scope,$uibModal, $log, $rootScope,PlantaService) {
 
-
+  if(!PlantaService.id_planta)
+			$state.go('inicio');
+			
 		var vm = this;
 
 		vm.trampas;
