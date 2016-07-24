@@ -8,6 +8,7 @@ use DB;
 
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+//use Auth;
 
 class ConfiguraciontrampaController extends Controller
 {
@@ -19,6 +20,14 @@ class ConfiguraciontrampaController extends Controller
 
   public function index($id)
   {
+    $user = JWTAuth::parseToken()->authenticate();
+    //$user = Auth::User();
+    $role = $user->role;
+    if($role != 'ADMIN'){
+    
+      return response()->json(['error' => 'Forbidden'], 403);
+    }
+
       // Retrieve all  in the database and return them
       //$trampas = Configuraciontrampa::all();
       $trampas = DB::table('configuraciontrampas')

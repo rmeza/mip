@@ -10,7 +10,7 @@
 
 		if(!PlantaService.id_planta)
 				$state.go('inicio');
-				
+
 		var vm = this;
 		vm.eventos;
 		vm.detalles;
@@ -42,6 +42,8 @@
 		})
 		.error(function(error) {
 			vm.error = error;
+			if(error.error=='Forbidden')
+				$state.go('inicio');
 		});
 
 		/**

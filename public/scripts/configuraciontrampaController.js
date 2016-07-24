@@ -12,7 +12,7 @@
 
   if(!PlantaService.id_planta)
 			$state.go('inicio');
-			
+
 		var vm = this;
 
 		vm.trampas;
@@ -23,6 +23,8 @@
 			vm.trampas = trampas;
 		}).error(function(error) {
 			vm.error = error;
+			if(error.error=='Forbidden')
+				$state.go('inicio');
 		});
 		//use to populate input tipo select.
 		$http.get('api/tipotrampa').success(function(tipotrampas) {

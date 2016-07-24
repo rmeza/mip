@@ -44,7 +44,7 @@
             <li><a ui-sref="trampas">Trampas</a></li>
             <li><a ui-sref="eventos">Eventos</a></li>
             <li><a ui-sref="charts">Graficos</a></li>
-            <li><a ui-sref="users">Usuarios</a></li>
+            <!--li><a ui-sref="users">Usuarios</a></li-->
             <!--li>
             <span id="idplanta" name="idplanta" aria-hidden="true">Planta</span>
              <select id="idplanta" name="idplanta" class="form-control" ng-model="selectedPlanta.id"
