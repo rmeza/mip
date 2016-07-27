@@ -43,7 +43,15 @@
             <li><a ui-sref="inicio">Inicio</a></li>
             <li><a ui-sref="trampas">Trampas</a></li>
             <li><a ui-sref="eventos">Eventos</a></li>
-            <li><a ui-sref="charts">Graficos</a></li>
+            <!--li><a ui-sref="charts">Graficos</a></li-->
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Gráficos <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a ui-sref="charts">Sumatoria Plagas</a></li>
+                <li><a ui-sref="chartindvtrampas">Individuos en Trampa</a></li>
+              </ul>
+            </li>
+
             <!--li><a ui-sref="users">Usuarios</a></li-->
             <!--li>
             <span id="idplanta" name="idplanta" aria-hidden="true">Planta</span>
@@ -97,5 +105,6 @@
   <script src="scripts/inicioController.js"></script>
   <script src="/components/charts/chart.js"></script>
   <script src="scripts/chartController.js"></script>
-  <script src="scripts/detalleeventoController.js"></script
+  <script src="scripts/detalleeventoController.js"></script>
+  <script src="scripts/chartindividuoController.js"></script>
 </html>

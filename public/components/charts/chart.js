@@ -13,6 +13,11 @@
       templateUrl: '/components/charts/chartView.html',
       controller: 'ChartController as chart'
     })
+    .state('chartindvtrampas',{
+      url: '/chartindvtrampas',
+      templateUrl: 'components/charts/individuoView.html',
+      controller: 'ChartIndividuoController as chartindvtrampa'
+    })
 
   })
 

@@ -1,0 +1,53 @@
+<div class="page-header">
+  <h3>Grafico Individuo Trampa </h3>
+</div>
+
+<div class="well well-sm form-inline">
+  <form name="chartForm" role="form" novalidate="novalidate" class="form-inline" ng-submit="chartindvtrampa.Graph()" novalidate>
+  <div class="form-group">
+    <label for="datestart">Fecha: </label>
+    <input type="date" class="form-control" name="datestart" ng-model="chartindvtrampa.datestart" required/>
+  </div>
+  <!--div class="form-group">
+    <label for="dateend">Fecha Fin: </label>
+    <input type="date" class="form-control" name="dateend" ng-model="chartindvtrampa.dateend" required/>
+  </div-->
+  <div class="form-group">
+    <label for="idclasificaiontrampa" >Clasificacion Trampa: </label>
+    <select name="idclasificaiontrampa" class="form-control" ng-model="chartindvtrampa.selectedClasificacionTrampa"
+    ng-options="clasificacion.id as clasificacion.name for clasificacion in chartindvtrampa.clasificaciones" required ></select>
+    <span class="help-inline" ng-show="chartForm.$submitted || chartForm.idclasificaiontrampa.$touched">
+      <span ng-show="chartForm.idclasificaiontrampa.$error.required">El campo clasificacion es obligatorio.</span>
+    </span>
+
+  </div>
+  <div  class="form-group">
+    <label for="idconfigtrampa">Trampa: </label>
+    <select name="idconfigtrampa" class="form-control" ng-model="chartindvtrampa.selectedConfigTrampa"
+    ng-options="config.id as config.numerotrampa for config in chartindvtrampa.configuracionesIds" required >
+    <option value="">Número de trampa</option>
+    </select>
+
+  <span  class="help-inline1" ng-show="chartForm.$submitted || chartForm.idconfigtrampa.$touched">
+    <span ng-show="chartForm.idconfigtrampa.$error.required">Numero de trampa es obligatorio</span>
+  </span>
+
+  </div>
+
+  <button  type="submit" class="btn btn-primary" ng-disabled="chartForm.$invalid">
+    <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Graficar
+  </button>
+
+  </form>
+</div>
+
+
+<div id="chartIndividuoTrampa"></div>
+
+
+
+<!-- Load c3.css -->
+<link href="node_modules/c3/c3.min.css" rel="stylesheet" type="text/css">
+<!-- Load d3.js and c3.js -->
+<script src="node_modules/c3/node_modules/d3/d3.min.js" charset="utf-8"></script>
+<script src="node_modules/c3/c3.min.js"></script>
