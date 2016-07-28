@@ -43,13 +43,13 @@ var idplanta = PlantaService.id_planta;
 				dateStart: vm.datestart,
 				//dateEnd: vm.dateend,
 				clasificacionTrampa: vm.selectedClasificacionTrampa,
-				numeroTrampa : vm.selectedConfigTrampa
+				idconfiguraciontrampa : vm.selectedConfigTrampa
 			};
 
 
 			$http({
 				method: 'GET',
-				url: 'api/showweekly/filter',
+				url: 'api/individuotrampa/filter',
 				params: filters,
 				headers: {'Content-Type': 'application/json'}
 			}).success(function(plagas) {
@@ -71,36 +71,23 @@ var idplanta = PlantaService.id_planta;
 		function GenerateChart(plagas)
 		{
 			var row = {};
-
 			var position=0;
 			var result=[];//array of rows object.
 			var plagaValues=[];//for keys
 			var categoriesValues=[];//for axis x
 			for(var i =0;i<plagas.length;i++)
 			{
-				plagaValues.push(plagas[i].plaga);
-				if(plagas[position].fechaevento==plagas[i].fechaevento)
-				{
+					plagaValues.push(plagas[i].plaga);
 					row.name = plagas[i].fechaevento;
 					row[plagas[i].plaga]=plagas[i].quantity;
-					if(plagas.length-1==i)//is the last row?
-					{
-						result.push(row);
-						categoriesValues.push(plagas[i].fechaevento);
-					}
-				}
-				else {//if date is different, add row to result
-
-					position=i;
-					result.push(row);
-					row={};
-					//add item row,
-					row.name = plagas[i].fechaevento;
-					row[plagas[i].plaga]=plagas[i].quantity;
-					categoriesValues.push(plagas[i-1].fechaevento);
-				}
 
 			}
+
+			result.push(row);
+			//only one
+		if(plagas.length>0)
+			categoriesValues.push(plagas[0].fechaevento);
+
 			//Initializing chart properties.
 			var chart = c3.generate({
 				bindto: '#chart',
@@ -109,10 +96,6 @@ var idplanta = PlantaService.id_planta;
 					/*json:[
 					{name:'4/1/2016',palomilla:30,mosquito:50, cuca:100},
 					{name:'11/1/2016',palomilla:50,mosquito:60},
-					{name:'18/1/2016',palomilla:60,mosquito:90},
-					{name:'25/1/2016',palomilla:80,mosquito:40},
-					{name:'8/2/2016',palomilla:70,mosquito:100},
-
 				],*/
 				keys: {
 					//value:['palomilla','mosquito']
@@ -128,7 +111,7 @@ var idplanta = PlantaService.id_planta;
 			},
 			axis:{
 				x: {
-					label: 'Semanas',
+					label: 'Semana',
 					type:'category',
 					//categories:['4/1/2016','11/1/2016','18/1/2016','25/1/2016','1/2/2016','8/2/2016']
 					categories: categoriesValues

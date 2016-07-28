@@ -47,7 +47,7 @@
             <li class="dropdown">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle">Gráficos <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a ui-sref="charts">Sumatoria Plagas</a></li>
+                <li><a ui-sref="charts">Sumatoria Semanal</a></li>
                 <li><a ui-sref="chartindvtrampas">Individuos en Trampa</a></li>
               </ul>
             </li>

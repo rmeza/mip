@@ -63,13 +63,12 @@ mostrar eventos en view, filtrados por planta selected
 
 */
 -- Grafico por individuos
-select ct.numerotrampa,SUM(de.quantity) as quantity,p.name,e.fechaevento 
+select SUM(de.quantity) as quantity,p.name,e.fechaevento 
 from eventos e
 inner join detalleeventos de on e.id = de.idevento
 inner join plagas p on de.idplaga = p.id
 inner join configuraciontrampas ct  on e.idconfiguraciontrampa=ct.id
 inner join plantas pl on ct.idplanta = pl.id
-where pl.id = 1 and ct.idclasificaiontrampa = 2 and e.fechaevento >='2016-01-04' and e.fechaevento <='2016-02-28'
+where pl.id = 1 and ct.idclasificaiontrampa = 2 and e.fechaevento ='2016-01-04' 
 and ct.numerotrampa =1
-group by ct.numerotrampa,p.name,e.fechaevento 
-order by e.fechaevento ASC
+group by p.name,e.fechaevento 

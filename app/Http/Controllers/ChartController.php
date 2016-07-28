@@ -40,6 +40,30 @@ class ChartController extends Controller
       return $eventos;
   }
 
+  /**
+  * Retreive plagas filtering by trampa,date and clasificacion.
+  * @param  Request  $request
+  * @return Response
+  */
+  public function individuosGraph(Request $request)
+  {
 
+      $eventos = DB::table('eventos')
+          ->join('detalleeventos', 'eventos.id', '=', 'detalleeventos.idevento')
+          ->join('plagas', 'detalleeventos.idplaga', '=', 'plagas.id')
+          ->join('configuraciontrampas', 'eventos.idconfiguraciontrampa', '=', 'configuraciontrampas.id')
+          ->join('plantas', 'configuraciontrampas.idplanta', '=', 'plantas.id')
+          ->select(DB::raw('SUM(detalleeventos.quantity) as quantity'),
+          'plagas.name as plaga',
+          'eventos.fechaevento')
+          ->where('plantas.id',  $request->input('idPlanta'))
+          ->where('configuraciontrampas.idclasificaiontrampa',  $request->input('clasificacionTrampa'))
+          ->where('eventos.fechaevento','=',   $request->input('dateStart'))
+          ->where('configuraciontrampas.id','=',  $request->input('idconfiguraciontrampa'))
+          ->groupBy('plagas.name','eventos.fechaevento')
+          ->get();
+
+      return $eventos;
+  }
 
 }
