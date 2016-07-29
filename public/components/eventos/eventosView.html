@@ -19,10 +19,15 @@
       <th></th>
 
     </tr>
+    <tr>
+      <th colspan="8">
+        <input class="form-control" name="searchClasificacion" type="text" ng-model="searchTodos" placeholder="Filtrar por clasificacion">
+      </th>
+    </tr>
   </thead>
   <tbody >
 
-    <tr  ng-repeat-start="item in evento.eventos" ng-click="evento.sessionEvento(item.id); evento.showDetalle(item.id)">
+    <tr  ng-repeat-start="item in evento.eventos | filter:{clasificacionname:searchTodos}" ng-click="evento.sessionEvento(item.id); evento.showDetalle(item.id)">
       <td>
         <div class="col-sm-2 text-right">
           <a href="">
@@ -81,5 +86,3 @@
         </tr>
       </tbody>
     </table>
-
-  
