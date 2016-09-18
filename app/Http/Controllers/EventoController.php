@@ -41,7 +41,7 @@ class EventoController extends Controller
           'eventos.semana',
           'eventos.description')
           ->where('plantas.id',  $idplanta)
-          ->orderBy('eventos.fechaevento','desc')
+          ->orderBy('eventos.fechaevento','DESC')
           ->get();
 
       return $eventos;

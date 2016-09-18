@@ -10,8 +10,8 @@
 
 		var vm = this;
 		vm.plagas;
+		vm.items = [];
 
-		
 		$http.get('api/showPlagas')
 			.success(function(plagas) {
 				vm.plagas=plagas;
@@ -20,7 +20,44 @@
 				vm.error = error;
 		});
 
+		vm.addPlaga = function(){
+			var item = {
+				selectedPlaga :"",
+				quantity: ""
+			};
+			vm.items.push(item);
+		};
+
 		vm.addDetalleEvento = function() {
+			var detalleEventos=[];
+			//populate session id_evento
+			for(var i = 0; i< vm.items.length;i++)
+			{
+					vm.items[i].idevento= EventoService.id_evento;
+					vm.items[i].createdby= $rootScope.currentUser.email;
+					vm.items[i].modifiedby= $rootScope.currentUser.email;
+			}
+
+
+			console.log('agregando el detalle');
+			console.log(vm.items);
+
+			$http({
+				method: 'POST',
+				url: 'api/detalleEvento',
+				data: JSON.stringify(vm.items),
+				headers: {'Content-Type': 'application/json'},
+				contentType: 'charset=UTF-8' 
+			}).success(function(response) {
+				console.log(response);
+				$state.go('eventos');
+			}).error(function(response) {
+				console.log(response);
+			});
+		};
+
+
+		/*vm.addDetalleEvento = function() {
 			var objdetalleEvento = {
 
 				idevento:EventoService.id_evento,//vm.idevento,
@@ -43,8 +80,8 @@
 			}).error(function(response) {
 				console.log(response);
 			});
-		};
-		
+		};*/
+
 	}
 
 })();
