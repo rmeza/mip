@@ -93,6 +93,7 @@
   <script src="node_modules/satellizer/satellizer.js"></script>
   <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
   <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+  <script src="node_modules/angular-smart-table/dist/smart-table.js"></script>
   <!-- Application Scripts -->
   <script src="scripts/app.js"></script>
   <script src="scripts/authController.js"></script>

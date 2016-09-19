@@ -5,7 +5,7 @@
   <i class="fa fa-plus-circle fa-fw"></i>&nbsp; Crear
 </button>
 
-<table class="table">
+<table st-table="displayedCollection" st-safe-src="evento.eventos" class="table">
   <thead>
     <tr>
       <th>Detalles</th>
@@ -21,13 +21,14 @@
     </tr>
     <tr>
       <th colspan="8">
-        <input class="form-control" name="searchClasificacion" type="text" ng-model="searchTodos" placeholder="Filtrar por clasificacion">
+        <!--input class="form-control" name="searchClasificacion" type="text" ng-model="searchTodos" placeholder="Filtrar por clasificacion"-->
+        <input st-search="" class="form-control" placeholder="Filtrar por Clasificacion, Ubicacion ó Fecha" type="text"/>
       </th>
     </tr>
   </thead>
   <tbody >
 
-    <tr  ng-repeat-start="item in evento.eventos | filter:{clasificacionname:searchTodos}" ng-click="evento.sessionEvento(item.id); evento.showDetalle(item.id)">
+    <tr  ng-repeat-start="item in displayedCollection" ng-click="evento.sessionEvento(item.id); evento.showDetalle(item.id)">
       <td>
         <div class="col-sm-2 text-right">
           <a href="">
@@ -85,4 +86,11 @@
           </td>
         </tr>
       </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="5" class="text-center">
+            <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+          </td>
+        </tr>
+    </tfoot>
     </table>

@@ -7,7 +7,7 @@
 		'authApp.configuraciontrampa',
 		'authApp.evento',
 		'authApp.chart',
-		'ui.bootstrap','ui.bootstrap.tpls'])
+		'ui.bootstrap','ui.bootstrap.tpls','smart-table'])
 	.config(function($stateProvider, $urlRouterProvider, $authProvider, $httpProvider, $provide) {
 
 		function redirectWhenLoggedOut($q, $injector) {
