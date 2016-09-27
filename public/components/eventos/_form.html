@@ -6,7 +6,7 @@
 
     <select name="idconfigtrampa" class="form-control" ng-model="evento.selectedConfigTrampa"
     ng-change=evento.showConfiguraciones(evento.selectedConfigTrampa);
-    ng-options="config.id as config.numerotrampa for config in evento.configuracionesIds" required >
+    ng-options="config.id as ('Trampa: ' + config.numerotrampa + ' ' + config.clasificacionname + ' ' + config.ubicacionname) for config in evento.configuracionesIds" required >
     <option value="">Selecciona un numero de trampa</option>
   </select>
 

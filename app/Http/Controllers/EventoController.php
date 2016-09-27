@@ -41,7 +41,7 @@ class EventoController extends Controller
           'eventos.semana',
           'eventos.description')
           ->where('plantas.id',  $idplanta)
-          ->orderBy('eventos.fechaevento','DESC')
+          ->orderBy('configuraciontrampas.numerotrampa','DESC')
           ->get();
 
       return $eventos;
@@ -74,10 +74,22 @@ class EventoController extends Controller
       return $configuraciones;
   }
 
+  /**
+  * Grab Config trampas with ubicaciones and clasificaciones.
+  * to populate input select.
+  * @param  idplanta
+  * @return List
+  */
   public function showconfiguracionesIDs($idplanta)
   {
       $configuraciones=DB::table('configuraciontrampas')
-      ->select('configuraciontrampas.id','configuraciontrampas.numerotrampa')
+      ->join('clasificaciontrampas', 'clasificaciontrampas.id', '=', 'configuraciontrampas.idclasificaiontrampa')
+      ->join('ubicaciones', 'ubicaciones.id', '=', 'configuraciontrampas.idubicacion')
+      ->select('configuraciontrampas.id',
+      'configuraciontrampas.numerotrampa',
+      'ubicaciones.name as ubicacionname',
+      'clasificaciontrampas.name as clasificacionname'
+      )
       ->where('configuraciontrampas.idplanta','=',$idplanta)
       ->get();
       return $configuraciones;
