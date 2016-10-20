@@ -42,8 +42,8 @@
 		})
 		.error(function(error) {
 			vm.error = error;
-			if(error.error=='Forbidden')
-				$state.go('inicio');
+			//if(error.error=='Forbidden')
+			//	$state.go('inicio');
 		});
 
 		/**

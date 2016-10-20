@@ -23,8 +23,8 @@
 			vm.trampas = trampas;
 		}).error(function(error) {
 			vm.error = error;
-			if(error.error=='Forbidden')
-				$state.go('inicio');
+			/*if(error.error=='Forbidden')
+				$state.go('inicio');*/
 		});
 		//use to populate input tipo select.
 		$http.get('api/tipotrampa').success(function(tipotrampas) {

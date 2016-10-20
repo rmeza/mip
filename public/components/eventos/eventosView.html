@@ -1,7 +1,7 @@
 <div class="page-header">
   <h3>Eventos <small>Listado</small></h3>
 </div>
-<button ui-sref="newEvento"  type="button" class="btn btn-primary ">
+<button ui-sref="newEvento"  type="button" class="btn btn-primary " ng-show="currentUser.role=='ADMIN'">
   <i class="fa fa-plus-circle fa-fw"></i>&nbsp; Crear
 </button>
 
@@ -68,7 +68,7 @@
                 <th class="col-sm-2" >Plaga</th>
                 <th class="col-sm-2" >Cantidad</th>
                 <th>
-                  <button ui-sref="newDetalleEvento"  type="button" class="btn btn-primary ">
+                  <button ui-sref="newDetalleEvento"  type="button" class="btn btn-primary " ng-show="currentUser.role=='ADMIN'">
                     <i class="fa fa-plus-circle fa-fw"></i>&nbsp; Agregar Plaga
                   </button>
                 </th>

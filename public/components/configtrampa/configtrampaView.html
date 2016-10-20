@@ -3,7 +3,7 @@
 <div class="page-header">
   <h3>Configuracion Trampa <small>Listado</small></h3>
 </div>
-<button ui-sref="newTrampa"  type="button" class="btn btn-primary ">
+<button ui-sref="newTrampa"  type="button" class="btn btn-primary " ng-show="currentUser.role=='ADMIN'">
   <i class="fa fa-plus-circle fa-fw"></i>&nbsp; Crear
 </button>
 
@@ -15,8 +15,8 @@
       <th>Ubicacion</th>
       <th>Clasificacion</th>
       <th>Planta</th>
-      
-      
+
+
 
     </tr>
   </thead>
@@ -27,8 +27,8 @@
       <td>{{  trampa.ubicacionname }}</td>
       <td>{{  trampa.clasificacionname }}</td>
       <td>{{  trampa.name }}</td>
-      
-      
+
+
       <td>
         <script type="text/ng-template" id="myModalContent.html">
           <div class="modal-header">
@@ -39,11 +39,9 @@
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
           </div>
         </script>
-        <button type="button" class="btn btn-danger" ng-click="deleteRow('sm',trampa.id, $index )">Delete</button>
+        <button type="button" class="btn btn-danger" ng-click="deleteRow('sm',trampa.id, $index )" ng-show="currentUser.role=='ADMIN'">Delete</button>
         <div ng-show="selected">Selection from a modal: {{ selected }}</div>
       </td>
     </tr>
   </tbody>
 </table>
- 
-

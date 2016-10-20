@@ -19,12 +19,12 @@ class EventoController extends Controller
 
   public function index($idplanta)
   {
-    $user = JWTAuth::parseToken()->authenticate();
+  /*  $user = JWTAuth::parseToken()->authenticate();
     $role = $user->role;
     if($role != 'ADMIN'){
 
       return response()->json(['error' => 'Forbidden'], 403);
-    }
+    }*/
 
       // Retrieve all  in the database and return them
       //$trampas = Configuraciontrampa::all();
