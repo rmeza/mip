@@ -47,7 +47,32 @@
 				url: 'api/detalleEvento',
 				data: JSON.stringify(vm.items),
 				headers: {'Content-Type': 'application/json'},
-				contentType: 'charset=UTF-8' 
+				contentType: 'charset=UTF-8'
+			}).success(function(response) {
+				console.log(response);
+				$state.go('eventos');
+			}).error(function(response) {
+				console.log(response);
+			});
+		};
+
+//Add Consume to Event selected.
+
+vm.addConsumoEvento = function(id) {
+
+			var objConsumeEvento = {
+
+				idevento:EventoService.id_evento,
+				quantity:vm.quantity,
+				createdby: $rootScope.currentUser.email,
+				modifiedby:$rootScope.currentUser.email
+			};
+
+			$http({
+				method: 'POST',
+				url: 'api/consumeEvento',
+				data: objConsumeEvento,
+				headers: {'Content-Type': 'application/json'}
 			}).success(function(response) {
 				console.log(response);
 				$state.go('eventos');

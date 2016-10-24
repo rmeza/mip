@@ -23,6 +23,11 @@
       templateUrl: '/components/eventos/detallesAdd.html',
       controller: 'DetalleEventoController as detalleevento'
     })
+    .state('newConsumoEvento', {
+      url: '/consumosEvento/new',
+      templateUrl: '/components/eventos/consumoAdd.html',
+      controller: 'DetalleEventoController as detalleevento'
+    })
 
   })
 

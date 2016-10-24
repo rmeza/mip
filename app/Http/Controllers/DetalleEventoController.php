@@ -12,6 +12,8 @@ use DB;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
+use App\ConsumoEvento;
+
 class DetalleEventoController extends Controller
 {
     //
@@ -52,6 +54,22 @@ class DetalleEventoController extends Controller
 
 			return $detalle->id;
 			*/
+
+		}
+
+///Store consume by current event.
+		public function saveConsume(Request $request) {
+
+			$consume = new ConsumoEvento;
+
+			$consume->idevento= $request->input('idevento');
+			$consume->consumeqty = $request->input('quantity');
+			$consume->createdby = $request->input('createdby');
+			$consume->modifiedby = $request->input('modifiedby');
+			$consume->save();
+
+			return $consume->id;
+
 
 		}
 

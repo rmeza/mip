@@ -61,6 +61,20 @@ class EventoController extends Controller
       return $detalle;
   }
 
+  ///retreive consume by event.
+  public function showConsume($id)
+  {
+      // Retrieve all  in the database and return them
+      //$trampas = Configuraciontrampa::all();
+      $consumes = DB::table('eventos')
+          ->join('consumoeventos', 'consumoeventos.idevento', '=', 'eventos.id')
+          ->select('eventos.id', 'consumeqty')
+          ->where('eventos.id', '=', $id)
+          ->get();
+
+      return $consumes;
+  }
+
   public function showConfiguraciones($id)
   {
       $configuraciones=DB::table('configuraciontrampas')

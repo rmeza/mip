@@ -16,6 +16,7 @@
 		vm.detalles;
 		vm.configuracionesIds
 		vm.error;
+		vm.consumos;
 
 		/**
 		* @method changeDate - This function calculete the numbre of the week
@@ -104,7 +105,21 @@
 			.error(function(error) {
 				vm.error = error;
 			});
+
+		// Get Consumes by current event.
+				//TODO: avoid call 2 functions, if id Exterior or terciaria, call the according function.
+			$http.get('api/getConsumeEventos/'+id)
+			.success(function(consumos) {
+				vm.consumos = consumos;
+			})
+			.error(function(error) {
+				vm.error = error;
+			});
+
 		};
+
+
+
 
 		/**
 		* @method addEvento - This function store events

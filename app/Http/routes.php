@@ -27,6 +27,7 @@ Route::group(['prefix' => 'api'], function()
     Route::get('planta','PlantaController@index');
     Route::get('evento/{id}','EventoController@index');
     Route::get('showDetalleEvento/{id}','EventoController@showDetail');
+    Route::get('getConsumeEventos/{id}','EventoController@showConsume');
     Route::get('showConfiguracion/{id}','EventoController@showConfiguraciones');
     Route::get('showConfiguracionIds/{idplanta}', 'EventoController@showconfiguracionesIDs');
 
@@ -35,5 +36,6 @@ Route::group(['prefix' => 'api'], function()
     Route::post('evento','EventoController@store');
     Route::post('detalleEvento','DetalleEventoController@store');
     Route::get('individuotrampa/filter','ChartController@individuosGraph');
+    Route::post('consumeEvento','DetalleEventoController@saveConsume');
 
 });

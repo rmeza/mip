@@ -28,7 +28,7 @@
   </thead>
   <tbody >
 
-    <tr  ng-repeat-start="item in displayedCollection" ng-click="evento.sessionEvento(item.id); evento.showDetalle(item.id)">
+    <tr  ng-repeat-start="item in displayedCollection" ng-click="evento.sessionEvento(item.id); evento.showDetalle(item.id);">
       <td>
         <div class="col-sm-2 text-right">
           <a href="">
@@ -61,28 +61,47 @@
       </tr>
       <tr class="row" ng-show="evento.active==item.id" ng-repeat-end="">
         <td colspan="8" >
-          <table>
+          <table ng-show="item.clasificacionname=='Exterior' || item.clasificacionname=='Terciaria'"><!-- Exterior and Terciarios has consume-->
             <thead>
               <tr >
                 <th class="col-sm-2"></th>
-                <th class="col-sm-2" >Plaga</th>
-                <th class="col-sm-2" >Cantidad</th>
+                <th class="col-sm-2" >Consumo</th>
                 <th>
-                  <button ui-sref="newDetalleEvento"  type="button" class="btn btn-primary " ng-show="currentUser.role=='ADMIN'">
-                    <i class="fa fa-plus-circle fa-fw"></i>&nbsp; Agregar Plaga
+                  <button ui-sref="newConsumoEvento"  type="button" class="btn btn-primary " ng-show="currentUser.role=='ADMIN'">
+                    <i class="fa fa-plus-circle fa-fw"></i>&nbsp; Agregar Consumo
                   </button>
                 </th>
                 </tr>
               </thead>
               <tbody>
-                <tr   ng-repeat="item2 in evento.detalles" >
+                <tr   ng-repeat="itemconsumo in evento.consumos" >
                   <td class="col-sm-2"></td>
-                  <td class="col-sm-2" >{{  item2.name }}</td>
-                  <td class="col-sm-2 text-center" >{{  item2.quantity}}</td>
-
+                  <td class="col-sm-2 text-center" >{{  itemconsumo.consumeqty}} %</td>
                 </tr>
               </tbody>
             </table>
+            <table ng-show="item.clasificacionname=='Interior' || item.clasificacionname=='Voladores' || item.clasificacionname=='Temporal'"><!-- Interior and Voladores has plagas-->
+              <thead>
+                <tr >
+                  <th class="col-sm-2"></th>
+                  <th class="col-sm-2" >Plaga</th>
+                  <th class="col-sm-2" >Cantidad</th>
+                  <th>
+                    <button ui-sref="newDetalleEvento"  type="button" class="btn btn-primary " ng-show="currentUser.role=='ADMIN'">
+                      <i class="fa fa-plus-circle fa-fw"></i>&nbsp; Agregar Plaga
+                    </button>
+                  </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr   ng-repeat="item2 in evento.detalles" >
+                    <td class="col-sm-2"></td>
+                    <td class="col-sm-2" >{{  item2.name }}</td>
+                    <td class="col-sm-2 text-center" >{{  item2.quantity}}</td>
+
+                  </tr>
+                </tbody>
+              </table>
           </td>
         </tr>
       </tbody>
