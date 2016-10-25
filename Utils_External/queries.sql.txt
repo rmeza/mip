@@ -72,3 +72,15 @@ inner join plantas pl on ct.idplanta = pl.id
 where pl.id = 1 and ct.idclasificaiontrampa = 2 and e.fechaevento ='2016-01-04' 
 and ct.numerotrampa =1
 group by p.name,e.fechaevento 
+
+--Para gaficar los consumos, solo Terciaria y Exterior.
+--sumar los consumos, filtar por intervlo de fechas y por planta
+-- filtrar por clasificacion (Terciaria y Exterior)
+select SUM(ce.consumeqty) as quantity,e.fechaevento 
+from eventos e
+inner join consumoeventos ce on e.id = ce.idevento
+inner join configuraciontrampas ct  on e.idconfiguraciontrampa=ct.id
+inner join plantas pl on ct.idplanta = pl.id
+where pl.id = 1 and ct.idclasificaiontrampa = 2 and e.fechaevento >='2016-08-16' and e.fechaevento <='2016-10-24'
+group by e.fechaevento 
+order by e.fechaevento ASC
