@@ -33,6 +33,7 @@ Route::group(['prefix' => 'api'], function()
 
     Route::get('showPlagas', 'PlagaController@showplagas');
     Route::get('showweekly/filter','ChartController@weeklyGraph');
+    Route::get('showweeklyconsumes/filter','ChartController@weeklyGraphConsume');
     Route::post('evento','EventoController@store');
     Route::post('detalleEvento','DetalleEventoController@store');
     Route::get('individuotrampa/filter','ChartController@individuosGraph');

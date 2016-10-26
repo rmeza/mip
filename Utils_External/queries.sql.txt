@@ -50,7 +50,7 @@ inner join detalleeventos de on e.id = de.idevento
 inner join plagas p on de.idplaga = p.id
 inner join configuraciontrampas ct  on e.idconfiguraciontrampa=ct.id
 inner join plantas pl on ct.idplanta = pl.id
-where pl.id = 1 and ct.idclasificaiontrampa = 2 and e.fechaevento >='2016-01-04' and e.fechaevento <='2016-02-28'
+where pl.id = 1 and ct.idclasificaiontrampa = 2 and e.fechaevento >='2016-01-04' and e.fechaevento <='2016-10-24'
 group by p.name,e.fechaevento 
 order by e.fechaevento ASC
 
@@ -69,7 +69,7 @@ inner join detalleeventos de on e.id = de.idevento
 inner join plagas p on de.idplaga = p.id
 inner join configuraciontrampas ct  on e.idconfiguraciontrampa=ct.id
 inner join plantas pl on ct.idplanta = pl.id
-where pl.id = 1 and ct.idclasificaiontrampa = 2 and e.fechaevento ='2016-01-04' 
+where pl.id = 1 and ct.idclasificaiontrampa = 2 and e.fechaevento ='2016-08-20' 
 and ct.numerotrampa =1
 group by p.name,e.fechaevento 
 
@@ -81,6 +81,9 @@ from eventos e
 inner join consumoeventos ce on e.id = ce.idevento
 inner join configuraciontrampas ct  on e.idconfiguraciontrampa=ct.id
 inner join plantas pl on ct.idplanta = pl.id
-where pl.id = 1 and ct.idclasificaiontrampa = 2 and e.fechaevento >='2016-08-16' and e.fechaevento <='2016-10-24'
+where pl.id = 1 and ct.idclasificaiontrampa = 2 and e.fechaevento >='2016-08-17' and e.fechaevento <='2016-10-24'
 group by e.fechaevento 
 order by e.fechaevento ASC
+
+
+

@@ -10,7 +10,7 @@
 
 		if(!PlantaService.id_planta)
 				$state.go('inicio');
-				
+
 		var vm = this;
 
 		$http.get('api/clasificaciontrampa').success(function(clasificaciones) {
@@ -25,10 +25,12 @@
 				idPlanta:  PlantaService.id_planta,
 				dateStart: vm.datestart,
 				dateEnd: vm.dateend,
-				clasificacionTrampa: vm.selectedClasificacionTrampa
+				clasificacionTrampa: vm.selectedClasificacionTrampa.id
 			};
 
-
+			//Show Chart for plagas
+			if(vm.selectedClasificacionTrampa.name == 'Interior' || vm.selectedClasificacionTrampa.name == 'Voladores' || vm.selectedClasificacionTrampa.name == 'Temporal')
+			{
 			$http({
 				method: 'GET',
 				url: 'api/showweekly/filter',
@@ -43,11 +45,30 @@
 			}).error(function(response) {
 				console.log(response);
 			});
+		}
+		else {//Show Chart for Consumes
+			$http({
+				method: 'GET',
+				url: 'api/showweeklyconsumes/filter',
+				params: filters,
+				headers: {'Content-Type': 'application/json'}
+			}).success(function(consumes) {
+				console.log(consumes);
+				//console.log(JSON.stringify(plagas));
+
+				GenerateChartConsume(consumes);
+
+			}).error(function(response) {
+				console.log(response);
+			});
+		}
+
+
 
 		};//vm.Graph
 
 		/**
-		* Generate Chart
+		* Generate Chart for plagas
 		*@param {object} plagas
 		**/
 		function GenerateChart(plagas)
@@ -125,6 +146,70 @@
 		console.log(result);
 
 	}//GenerateChart
+
+	/**
+	* Generate Chart for consumes, clasificacion (Exterior and terciaria)
+	*@param {object} consumes
+	**/
+	function GenerateChartConsume(consumes)
+	{
+		var row = {};
+		var result=[];//array of rows object.
+		//var plagaValues=[];//for keys
+		var categoriesValues=[];//for axis x, Dates
+
+		for(var i =0;i<consumes.length;i++)
+		{
+
+				row.name = consumes[i].fechaevento;
+				row.consumo=consumes[i].quantity;
+				categoriesValues.push(consumes[i].fechaevento);
+				result.push(row);
+				row={};
+		}
+
+		//Initializing chart properties.
+		var chart = c3.generate({
+			bindto: '#chart',
+			data: {
+				json: result,
+				/*json:[
+				{name:'4/1/2016',palomilla:30,mosquito:50, cuca:100},
+				{name:'11/1/2016',palomilla:50,mosquito:60},
+				{name:'18/1/2016',palomilla:60,mosquito:90},
+				{name:'25/1/2016',palomilla:80,mosquito:40},
+				{name:'8/2/2016',palomilla:70,mosquito:100},
+
+			],*/
+			keys: {
+				//value:['palomilla','mosquito']
+				value: ['consumo']
+			},
+			type: 'bar',
+
+		},
+		grid:{
+			y:{
+				show:true
+			}
+		},
+		axis:{
+			x: {
+				label: 'Semanas',
+				type:'category',
+				//categories:['4/1/2016','11/1/2016','18/1/2016','25/1/2016','1/2/2016','8/2/2016']
+				categories: categoriesValues
+			},
+			y:{
+				label:'Cantidad'
+			},
+
+		}
+
+	});//chart
+	console.log(result);
+
+}//GenerateChartConsume
 
 }
 

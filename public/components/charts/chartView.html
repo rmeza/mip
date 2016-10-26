@@ -15,7 +15,7 @@
   <div class="form-group">
     <label for="idclasificaiontrampa" >Clasificacion Trampa: </label>
     <select name="idclasificaiontrampa" class="form-control" ng-model="chart.selectedClasificacionTrampa"
-    ng-options="clasificacion.id as clasificacion.name for clasificacion in chart.clasificaciones" required ></select>
+    ng-options="clasificacion as clasificacion.name for clasificacion in chart.clasificaciones" required ></select>
     <span class="help-inline" ng-show="chartForm.$submitted || chartForm.idclasificaiontrampa.$touched">
       <span ng-show="chartForm.idclasificaiontrampa.$error.required">El campo clasificacion es obligatorio.</span>
     </span>

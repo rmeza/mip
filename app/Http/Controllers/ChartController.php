@@ -66,4 +66,29 @@ class ChartController extends Controller
       return $eventos;
   }
 
+  /**
+  * Retreive consume filtering by date and clasificacion. ( for Exterio and Terciaria)
+  * @param  Request  $request
+  * @return Response
+  */
+  public function weeklyGraphConsume(Request $request)
+  {
+
+      $eventos = DB::table('eventos')
+          ->join('consumoeventos', 'eventos.id', '=', 'consumoeventos.idevento')
+          ->join('configuraciontrampas', 'eventos.idconfiguraciontrampa', '=', 'configuraciontrampas.id')
+          ->join('plantas', 'configuraciontrampas.idplanta', '=', 'plantas.id')
+          ->select(DB::raw('SUM(consumoeventos.consumeqty) as quantity'),
+          'eventos.fechaevento')
+          ->where('plantas.id',  $request->input('idPlanta'))
+          ->where('configuraciontrampas.idclasificaiontrampa',  $request->input('clasificacionTrampa'))
+          ->where('eventos.fechaevento','>=',   $request->input('dateStart'))
+          ->where('eventos.fechaevento','<=',  $request->input('dateEnd'))
+          ->groupBy('eventos.fechaevento')
+          ->orderBy('eventos.fechaevento','asc')
+          ->get();
+
+      return $eventos;
+  }
+
 }
