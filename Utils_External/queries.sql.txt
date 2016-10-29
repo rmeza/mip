@@ -62,15 +62,15 @@ mostrar tipo  en view eventos
 mostrar eventos en view, filtrados por planta selected
 
 */
--- Grafico por individuos
+-- Grafico por individuos, para plagas
 select SUM(de.quantity) as quantity,p.name,e.fechaevento 
 from eventos e
 inner join detalleeventos de on e.id = de.idevento
 inner join plagas p on de.idplaga = p.id
 inner join configuraciontrampas ct  on e.idconfiguraciontrampa=ct.id
 inner join plantas pl on ct.idplanta = pl.id
-where pl.id = 1 and ct.idclasificaiontrampa = 2 and e.fechaevento ='2016-08-20' 
-and ct.numerotrampa =1
+where pl.id = 1 and ct.idclasificaiontrampa = 4 and e.fechaevento ='2016-10-19' 
+and ct.numerotrampa =5555
 group by p.name,e.fechaevento 
 
 --Para gaficar los consumos, solo Terciaria y Exterior.

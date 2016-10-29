@@ -38,5 +38,6 @@ Route::group(['prefix' => 'api'], function()
     Route::post('detalleEvento','DetalleEventoController@store');
     Route::get('individuotrampa/filter','ChartController@individuosGraph');
     Route::post('consumeEvento','DetalleEventoController@saveConsume');
+    Route::get('individuotrampaconsumes/filter','ChartController@individuosGraphConsume');
 
 });

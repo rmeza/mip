@@ -42,25 +42,43 @@ var idplanta = PlantaService.id_planta;
 				idPlanta:  PlantaService.id_planta,
 				dateStart: vm.datestart,
 				//dateEnd: vm.dateend,
-				clasificacionTrampa: vm.selectedClasificacionTrampa,
+				clasificacionTrampa: vm.selectedClasificacionTrampa.id,
 				idconfiguraciontrampa : vm.selectedConfigTrampa
 			};
 
+			//Show Chart for plagas
+			if(vm.selectedClasificacionTrampa.name == 'Interior' || vm.selectedClasificacionTrampa.name == 'Voladores' || vm.selectedClasificacionTrampa.name == 'Temporal')
+			{
+				$http({
+					method: 'GET',
+					url: 'api/individuotrampa/filter',
+					params: filters,
+					headers: {'Content-Type': 'application/json'}
+				}).success(function(plagas) {
+					console.log(plagas);
+					//console.log(JSON.stringify(plagas));
 
-			$http({
-				method: 'GET',
-				url: 'api/individuotrampa/filter',
-				params: filters,
-				headers: {'Content-Type': 'application/json'}
-			}).success(function(plagas) {
-				console.log(plagas);
-				//console.log(JSON.stringify(plagas));
+					GenerateChart(plagas);
 
-				GenerateChart(plagas);
+				}).error(function(response) {
+					console.log(response);
+				});
+			}
+			else {//Show Chart for Consumes for (Exterior and terciaria)
+				$http({
+					method: 'GET',
+					url: 'api/individuotrampaconsumes/filter',
+					params: filters,
+					headers: {'Content-Type': 'application/json'}
+				}).success(function(consumes) {
 
-			}).error(function(response) {
-				console.log(response);
-			});
+					GenerateChartIndividoConsume(consumes);
+
+				}).error(function(response) {
+					console.log(response);
+				});
+			}
+
 
 		};//vm.Graph
 
@@ -126,6 +144,64 @@ var idplanta = PlantaService.id_planta;
 		console.log(result);
 
 	}//GenerateChart
+
+	/**
+	* Generate Chart for consumes Exterior an Terciaria
+	*@param {object} consumes
+	**/
+	function GenerateChartIndividoConsume(consumes)
+	{
+		var row = {};
+
+		var result=[];//array of rows object.
+		var plagaValues=['consumo'];//for keys
+		var categoriesValues=[];//for axis x
+		for(var i =0;i<consumes.length;i++)
+		{
+			row.name = consumes[i].fechaevento;
+			row.consumo=consumes[i].quantity;
+			categoriesValues.push(consumes[i].fechaevento);
+			result.push(row);
+			row={};
+
+		}
+
+	
+		//Initializing chart properties.
+		var chart = c3.generate({
+			bindto: '#chart',
+			data: {
+				json: result,
+			keys: {
+				//value:['palomilla','mosquito']
+				value:plagaValues
+			},
+			type: 'bar',
+
+		},
+		grid:{
+			y:{
+				show:true
+			}
+		},
+		axis:{
+			x: {
+				label: 'Semana',
+				type:'category',
+				//categories:['4/1/2016','11/1/2016','18/1/2016','25/1/2016','1/2/2016','8/2/2016']
+				categories: categoriesValues
+			},
+			y:{
+				label:'Cantidad'
+			},
+
+		}
+
+	});//chart
+	console.log(result);
+
+}//GenerateChartIndividoConsume
+
 
 }
 
