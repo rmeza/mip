@@ -40,7 +40,7 @@
 				console.log(plagas);
 				//console.log(JSON.stringify(plagas));
 
-				GenerateChart(plagas);
+				GenerateChart(plagas,"#chart");
 
 			}).error(function(response) {
 				console.log(response);
@@ -56,7 +56,7 @@
 				console.log(consumes);
 				//console.log(JSON.stringify(plagas));
 
-				GenerateChartConsume(consumes);
+				GenerateChartConsume(consumes,"#chart");
 
 			}).error(function(response) {
 				console.log(response);
@@ -67,11 +67,59 @@
 
 		};//vm.Graph
 
+
+		vm.Graph2 = function() {
+			var filters = {
+				idPlanta:  PlantaService.id_planta,
+				dateStart: vm.datestart2,
+				dateEnd: vm.dateend2,
+				clasificacionTrampa: vm.selectedClasificacionTrampa2.id
+			};
+
+			//Show Chart for plagas
+			if(vm.selectedClasificacionTrampa2.name == 'Interior' || vm.selectedClasificacionTrampa2.name == 'Voladores' || vm.selectedClasificacionTrampa2.name == 'Temporal')
+			{
+			$http({
+				method: 'GET',
+				url: 'api/showweekly/filter',
+				params: filters,
+				headers: {'Content-Type': 'application/json'}
+			}).success(function(plagas) {
+				console.log(plagas);
+				//console.log(JSON.stringify(plagas));
+
+				GenerateChart(plagas,"#chart2");
+
+			}).error(function(response) {
+				console.log(response);
+			});
+		}
+		else {//Show Chart for Consumes
+			$http({
+				method: 'GET',
+				url: 'api/showweeklyconsumes/filter',
+				params: filters,
+				headers: {'Content-Type': 'application/json'}
+			}).success(function(consumes) {
+				console.log(consumes);
+				//console.log(JSON.stringify(plagas));
+
+				GenerateChartConsume(consumes,"#chart2");
+
+			}).error(function(response) {
+				console.log(response);
+			});
+		}
+
+
+
+	};//vm.Graph2
+
 		/**
 		* Generate Chart for plagas
 		*@param {object} plagas
 		**/
-		function GenerateChart(plagas)
+		function GenerateChart(plagas,chartContainer)
 		{
 			var row = {};
 
@@ -106,7 +154,7 @@
 			}
 			//Initializing chart properties.
 			var chart = c3.generate({
-				bindto: '#chart',
+				bindto: chartContainer,//'#chart',
 				data: {
 					json: result,
 					/*json:[
@@ -151,7 +199,7 @@
 	* Generate Chart for consumes, clasificacion (Exterior and terciaria)
 	*@param {object} consumes
 	**/
-	function GenerateChartConsume(consumes)
+	function GenerateChartConsume(consumes,chartContainer)
 	{
 		var row = {};
 		var result=[];//array of rows object.
@@ -170,7 +218,7 @@
 
 		//Initializing chart properties.
 		var chart = c3.generate({
-			bindto: '#chart',
+			bindto: chartContainer,//'#chart',
 			data: {
 				json: result,
 				/*json:[
