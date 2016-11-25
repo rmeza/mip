@@ -15,7 +15,10 @@
   <div class="form-group">
     <label for="idclasificaiontrampa" >Clasificacion Trampa: </label>
     <select name="idclasificaiontrampa" class="form-control" ng-model="chartindvtrampa.selectedClasificacionTrampa"
-    ng-options="clasificacion as clasificacion.name for clasificacion in chartindvtrampa.clasificaciones" required ></select>
+            ng-change="chartindvtrampa.getTrampasByClasificacion(chartindvtrampa.selectedClasificacionTrampa);"
+    ng-options="clasificacion as clasificacion.name for clasificacion in chartindvtrampa.clasificaciones" required>
+      <option value="">Clasificación de trampa</option>
+    </select>
     <span class="help-inline" ng-show="chartForm.$submitted || chartForm.idclasificaiontrampa.$touched">
       <span ng-show="chartForm.idclasificaiontrampa.$error.required">El campo clasificacion es obligatorio.</span>
     </span>
@@ -24,8 +27,8 @@
   <div  class="form-group">
     <label for="idconfigtrampa">Trampa: </label>
     <select name="idconfigtrampa" class="form-control" ng-model="chartindvtrampa.selectedConfigTrampa"
-    ng-options="config.id as config.numerotrampa for config in chartindvtrampa.configuracionesIds" required >
-    <option value="">Número de trampa</option>
+    ng-options="config.id as ('Trampa: ' + config.numerotrampa + ' Ubicacion: ' + config.ubicacion) for config in chartindvtrampa.trampas" ng-show="chartindvtrampa.trampas.length>0" >
+    <!--option value="" selected>Número de trampa</option-->
     </select>
 
   <span  class="help-inline1" ng-show="chartForm.$submitted || chartForm.idconfigtrampa.$touched">

@@ -115,4 +115,28 @@ class ChartController extends Controller
     return $eventos;
   }
 
+  /**
+  * Get trampas filtering by clasificacion and ubicacion.
+  * @param  Request  $request
+  * @return Response
+  */
+  public function getTrampasByClasificacion(Request $request)
+  {
+
+    $trampas = DB::table('configuraciontrampas')
+    ->join('plantas', 'configuraciontrampas.idplanta', '=', 'plantas.id')
+    ->join('ubicaciones', 'configuraciontrampas.idubicacion', '=', 'ubicaciones.id')
+    ->select(
+    'configuraciontrampas.id',
+    'plantas.name as planta',
+    'configuraciontrampas.numerotrampa',
+    'ubicaciones.name as ubicacion')
+    ->where('plantas.id',  $request->input('idPlanta'))
+    ->where('configuraciontrampas.idclasificaiontrampa',  $request->input('clasificacionTrampa'))
+    ->orderBy('configuraciontrampas.numerotrampa','asc')
+    ->get();
+
+    return $trampas;
+  }
+
 }

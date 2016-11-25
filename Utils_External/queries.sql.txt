@@ -85,5 +85,10 @@ where pl.id = 1 and ct.idclasificaiontrampa = 2 and e.fechaevento >='2016-08-17'
 group by e.fechaevento 
 order by e.fechaevento ASC
 
-
-
+-- filtering trampas by clasificacion
+select pl.name as planta,numerotrampa, u.name as ubicacion
+from configuraciontrampas ct
+inner join plantas pl on ct.idplanta = pl.id
+inner join ubicaciones u on ct.idubicacion = u.id
+where idclasificaiontrampa= 4 and pl.id = 1
+order by numerotrampa ASC

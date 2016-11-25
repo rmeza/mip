@@ -25,15 +25,31 @@
 		* @return configuracionesIds - the object that contains all configurations
 		*/
 var idplanta = PlantaService.id_planta;
+
 		if(idplanta){
-			$http.get('api/showConfiguracionIds/'+ idplanta)
-			.success(function(configuracionesIds) {
-				vm.configuracionesIds = configuracionesIds;
-				console.log(vm.configuracionesIds);
-			})
-			.error(function(error) {
-				vm.error = error;
+
+
+		vm.getTrampasByClasificacion=function(idclasificaiontrampa){
+
+			var filters = {
+				idPlanta:  PlantaService.id_planta,
+				clasificacionTrampa: idclasificaiontrampa.id //vm.selectedClasificacionTrampa.id,
+			};
+
+			$http({
+				method: 'GET',
+				url: 'api/getTrampasByClasificacion/filter',
+				params: filters,
+				headers: {'Content-Type': 'application/json'}
+			}).success(function(trampas) {
+				console.log(trampas);
+				vm.trampas = trampas;
+
+			}).error(function(response) {
+				console.log(response);
 			});
+		};
+
 		}
 
 
@@ -166,7 +182,7 @@ var idplanta = PlantaService.id_planta;
 
 		}
 
-	
+
 		//Initializing chart properties.
 		var chart = c3.generate({
 			bindto: '#chart',
